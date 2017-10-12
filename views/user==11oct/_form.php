@@ -20,8 +20,8 @@ use yii\widgets\ActiveForm;
 
         <div class="col-md-6 box-body">
 
-            <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'class' => 'form-control', 
-              'placeholder'=>"name / Email",'type'=>'email','required'=>true,'data-parsley-required-message'=>'This value is required.','data-parsley-type'=>"email",'data-parsley-type-message'=>'This value should be a valid email.','autocomplete'=>'off'])->label('name / Email'); ?>
+            <?= $form->field($model, 'username')->textInput(['maxlength' => true, 'class' => 'form-control', 
+              'placeholder'=>"Username / Email",'type'=>'email','required'=>true,'data-parsley-required-message'=>'This value is required.','data-parsley-type'=>"email",'data-parsley-type-message'=>'This value should be a valid email.','autocomplete'=>'off'])->label('Username / Email'); ?>
 
             <?php if(empty(Yii::$app->request->get('id'))){?>
               <?= $form->field($model, 'password')->textInput(['maxlength' => true, 'class' => 'form-control', 
@@ -34,10 +34,10 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'image')->fileInput(['class' => 'form-control']); ?>
             <p class="text-red">Max Upload Size: 2 MB & Resolution: 300x300px</p>
 
-            <?= $form->field($model, 'number')->textInput(['maxlength' => true, 'class' => 'form-control', 
+            <?= $form->field($model, 'mobile_no')->textInput(['maxlength' => true, 'class' => 'form-control', 
                'placeholder'=>"Mobile No",'required'=>true,'data-parsley-required-message'=>'This value is required.','data-parsley-length'=>"[6, 15]",'data-parsley-length-message'=>'This value length is invalid. It should be between 6 and 15 characters long.','data-parsley-pattern'=>"(?=.*[0-9]).*", 'data-parsley-pattern-message'=>"Mobile No. should in Number only."]); ?>
 
-            <?= $form->field($model)->textInput(['maxlength' => true, 'class' => 'form-control', 
+            <?= $form->field($model, 'alternate_no')->textInput(['maxlength' => true, 'class' => 'form-control', 
                'placeholder'=>"Alternative No",'data-parsley-length'=>"[6, 8]",'data-parsley-pattern'=>"(?=.*[0-9]).*", 'data-parsley-pattern-message'=>"Mobile No. should in Number only."])->label('Alternative No. {optional}'); ?>            
 
         </div>  

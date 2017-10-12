@@ -21,7 +21,7 @@ $this->title = 'Users';
     <div class="panel panel-primary">
         <div class="panel-heading" style="padding-bottom:22px;">
             <?php echo $this->title; ?>
-            <?= Html::a('Create User', ['create'], ['class' => 'btn btn-warning pull-right']) ?>
+            <?= Html::a('Create User', ['create'], ['class' => 'btn btn-warning pull-right crt_user']) ?>
             </div>           
 
         <?= GridView::widget([            
@@ -30,15 +30,14 @@ $this->title = 'Users';
             'summary'=>'',
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
-                // 'regid',
-                // 'nick_name',
+                'nick_name',
                 'number',
-                //'username', 
-                [
-                    'attribute'=>'number',
-                    'label'=>'MObile No.',
-                    'value'=>'number',
-                ],
+                //'name', 
+                // [
+                    // 'attribute'=>'name',
+                    // 'label'=>'Email',
+                    // 'value'=>'name',
+                // ],
                 [
                     'attribute'=>'status',
                     'label'=>'Status',
@@ -47,59 +46,59 @@ $this->title = 'Users';
                             },
                 ],
                 //['class' => 'yii\grid\ActionColumn'],
-                ['class' => 'yii\grid\ActionColumn',  
+                 ['class' => 'yii\grid\ActionColumn',  
 
                     'header' => 'Actions',
                     //'headerOptions' => '',//$data->rate->name
-                    'template' => '{viewincome}{update}{delete}{resetpassword}',   //{view}
+                    'template' => '{viewincome}',//{update}{delete}{resetpassword}',   //{view}
                     'buttons' => [
-                        /*'view' => function ($url, $model) {
-                            return Html::a('<span class="btn btn-primary btn-xs glyphicon glyphicon-eye-open"></span> || ', $url, [
-                                        'title' => Yii::t('app', 'View'),
-                                        'data-toggle'=>'tooltip',
-                                        'data-placement'=>'top',
-                                        'style'=>'cursor:default;'
+                        // 'view' => function ($url, $model) {
+                            // return Html::a('<span class="btn btn-primary btn-xs glyphicon glyphicon-eye-open "></span> || ', $url, [
+                                        // 'title' => Yii::t('app', 'View'),
+                                        // 'data-toggle'=>'tooltip',
+                                        // 'data-placement'=>'top',
+                                        // 'style'=>'cursor:default;'
 										
-                            ]);
-                        },*/
+                            // ]);
+                        // },
                         'viewincome' => function ($url, $model) {
-                            return Html::a('<span class="btn btn-success btn-xs fa fa-eye"></span> || ', $url, [
+                            return Html::a('<span class="btn ico_hide btn-success btn-xs fa fa-eye"></span>', '#', [
                                         'title' => Yii::t('app', 'View All Detail'),
                                         'data-toggle'=>'tooltip',
                                         'data-placement'=>'top',
                                         'style'=>'cursor:default;',
                                         'target'=>'_blank'
                             ]);
-                        },
-                        'update' => function ($url, $model) {
-                            return Html::a('<span class="btn btn-warning btn-xs glyphicon glyphicon-pencil"></span> || ', $url, [
-                                        'title' => Yii::t('app', 'Update'),
-                                        'data-toggle'=>'tooltip',
-                                        'data-placement'=>'top',
-                                        'style'=>'cursor:default;'
-                            ]);
-                        },
-                        'delete' => function ($url, $model) {
-                            return Html::a('<i class="fa fa-trash"></i>', $url, [
-                                        'class'=>'btn btn-danger btn-xs',
-                                        'title' => Yii::t('app', 'Delete'),
-                                        'data-toggle'=>'tooltip',
-                                        'data-placement'=>'top',
-                                        'style'=>'cursor:default;',
-                                        'onclick'=>'return confirm("Are You Sure Want To Delete?")',
-                                        'data-method'=>'post'
-                            ]);
-                        } 
-                        ,
-                        'resetpassword' => function ($url, $model) {
-                            return Html::a(' || <span class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="'.Yii::t('app', 'Reset Password').'"><i class="fa fa-cog"></i></span>', 'javascript:;', [
-                                        'data-toggle'=>'modal',
-                                        'data-target'=>'#modal-info',
-                                        'onclick'=>'addid('.$model->id.')',
-                            ]);
-                        }                        
+                        }
+                        // 'update' => function ($url, $model) {
+                            // return Html::a('<span class="btn btn-warning btn-xs glyphicon glyphicon-pencil"></span> || ', $url, [
+                                        // 'title' => Yii::t('app', 'Update'),
+                                        // 'data-toggle'=>'tooltip',
+                                        // 'data-placement'=>'top',
+                                        // 'style'=>'cursor:default;'
+                            // ]);
+                        // },
+                        // 'delete' => function ($url, $model) {
+                            // return Html::a('<i class="fa fa-trash"></i>', $url, [
+                                        // 'class'=>'btn btn-danger btn-xs',
+                                        // 'title' => Yii::t('app', 'Delete'),
+                                        // 'data-toggle'=>'tooltip',
+                                        // 'data-placement'=>'top',
+                                        // 'style'=>'cursor:default;',
+                                        // 'onclick'=>'return confirm("Are You Sure Want To Delete?")',
+                                        // 'data-method'=>'post'
+                            // ]);
+                        // } 
+                        // ,
+                        // 'resetpassword' => function ($url, $model) {
+                            // return Html::a(' || <span class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="'.Yii::t('app', 'Reset Password').'"><i class="fa fa-cog"></i></span>', 'javascript:;', [
+                                        // 'data-toggle'=>'modal',
+                                        // 'data-target'=>'#modal-info',
+                                        // 'onclick'=>'addid('.$model->id.')',
+                            // ]);
+                        // }                        
                     ],
-                ],
+                ], 
             ],
         ]); ?>
     </div>

@@ -43,7 +43,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['username', 'password', 'otp_code','otpverify', 'device_id', 'registration_type', 'status', 'role','created_date', 'updated_date'];
+        $scenarios['create'] = ['username', 'password', 'otp_code','otpverify', 'device_id', 'registration_type', 'status', 'role','created_date', 'last_update_date'];
         return $scenarios;
     }
 
@@ -58,7 +58,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function rules()
     {
         return [
-            [[/*'registration_id',*/  'number'/*, 'lname', 'name', 'password', 'device_type', 'facebook_id', 'image'*, 'number'/*, 'alternate_no', 'otp_code', 'device_id', 'nick_name', 'occupation', 'gender', 'age',*/ /*'status',*/ /*'registration_type', 'opening_balance'*//*, 'created_date', 'last_update_date'*/], 'required'],
+            [[/*'registration_id',*/ /*, 'lname', 'fname', 'password', 'device_type', 'facebook_id', 'image'*, 'number'/*, 'alternate_no', 'otp_code', 'device_id', 'nick_name', 'occupation', 'gender', 'age',*/ /*'status',*/ /*'registration_type', 'opening_balance'*//*, 'created_date', 'last_update_date'*/], 'required'],
             [[ 'status', 'registration_type', 'lang'], 'integer'],
             //[['created_date', 'last_update_date'], 'safe'],
             [[/*'registration_id',*/ 'number'], 'string', 'max' => 100],
@@ -77,24 +77,24 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             'id' => 'ID',
-            'regid' => 'Registration ID',
-            'name' => 'Username',
+//            'regid' => 'Registration ID',
+            'username' => 'Username',
             'password' => 'Password',
 //            'device_type' => 'Device Type',
-            'fb_id' => 'Facebook ID',
+            'facebook_id' => 'Facebook ID',
             'image' => 'Image',
             'number' => 'Mobile No',
 //            'alternate_no' => 'Alternate No',
             'otp_code' => 'Otp Code',
             'device_id' => 'Device ID',
-        'nick_name' => 'Nick Name',
-            //'occupation' => 'Occupation',
+//            'nick_name' => 'Nick Name',
+            'occupation' => 'Occupation',
             'gender' => 'Gender',
 //            'age' => 'Age',
             'status' => 'Status',
             'role' => 'Role',
             'registration_type' => 'Register By',
-            //'opening_balance' => 'Opening Balance',
+            'opening_balance' => 'Opening Balance',
             //'created_date' => 'Created Date',
             //'last_update_date' => 'Last Update Date',
         ];

@@ -21,8 +21,8 @@ class UserSearch extends User
     {
         return [
             [['id', 'status', 'registration_type', 'lang','verify_no'], 'integer'],
-            [['password', 'register_id', 'fb_id', 'image', 'number', 'otp_code', 'device_id',   'gender',  'created_date', 'updated_date'], 'safe'],
-        ]; //, 'device_type' 'age''opening_balance','nick_name','occupation',
+            [['password', 'register_id', 'fb_id', 'image', 'number', 'otp_code', 'device_id', 'nick_name', 'occupation', 'gender', 'created_date', 'last_update_date'], 'safe'],
+        ]; //, 'device_type' 'age'
     }
 
     /**
@@ -41,19 +41,10 @@ class UserSearch extends User
      *
      * @return ActiveDataProvider
      */
-	public function getdata() {
-              $connection = User::find()->where(['role'=> 2]);
-              $dataProvider = new ActiveDataProvider([
-            'query' => $connection,
-            'pagination'=>false,
-        ]);
-              return dataProvider;
-        } 
-	 
     public function search($params)
     {
         //$query = User::find();
-        $query = User::find()->where(['role'=> 2])->orderBy(['id'=>SORT_ASC]);
+        $query = User::find()->where(['role'=> "2"])->orderBy(['id'=>SORT_ASC]);
 
         // add conditions that should always apply here
 
@@ -62,22 +53,22 @@ class UserSearch extends User
             'pagination'=>false,
         ]);
 
-        //$this->load($params);
+        $this->load($params);
 
-       // if (!$this->validate()) {
+        if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
-           // return $dataProvider;
-        //}
+            return $dataProvider;
+        }
 
         // grid filtering conditions
-       /* $query->andFilterWhere([
+        $query->andFilterWhere([
             /*'id' => $this->id,
             'age' => $this->age,
             'status' => $this->status,
             'register_by' => $this->register_by,
             'created_date' => $this->created_date,
-            'last_update_date' => $this->last_update_date,
+            'last_update_date' => $this->last_update_date,*/
         ]);
 
 //        $query->andFilterWhere(['like', 'username', $this->username])
@@ -93,7 +84,7 @@ class UserSearch extends User
 //            ->andFilterWhere(['like', 'occupation', $this->occupation])
 //            ->andFilterWhere(['like', 'gender', $this->gender])
 //            ->andFilterWhere(['like', 'opening_balance', $this->opening_balance]);
-*/
+
         return $dataProvider;
 
         // /andFilterWhere(['like', 'registration_id', $this->registration_id])->
@@ -195,7 +186,6 @@ class UserSearch extends User
         }
         return $error;
     }
-    
     public function validateUpdate($data=null)
     {
         $error=array('error'=>false);
@@ -274,11 +264,6 @@ class UserSearch extends User
             $error['error']=true;
             $error['statuscode']=320;
             $error['msg']="Please enter your introduction.";
-        }
-        else if(!isset($data['dob']) || empty($data['dob'])){  
-            $error['error']=true;
-            $error['statuscode']=322;
-            $error['msg']="Please enter your Date of birth.";
         }
         else
         {
@@ -411,7 +396,7 @@ class UserSearch extends User
         }
 
     }
-    public function isExistBytoken($session_key)   //SESSIONKEY
+    public function isExistBytoken($session_key)
     {
         if(!empty($session_key))
         {

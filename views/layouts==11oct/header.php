@@ -22,7 +22,7 @@ if(Yii::$app->user->isGuest==1)
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>M</b>App</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>MillionSinger</b> App</span>
+      <span class="logo-lg"><b>Million singer</b> App</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -39,29 +39,29 @@ if(Yii::$app->user->isGuest==1)
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <?php 
               $image="";
-              $nick_name="";
-              if(Yii::$app->user->isGuest!=1)
-              {
-                $nick_name=Yii::$app->user->identity->nick_name;
-                if(Yii::$app->user->identity->image!=null)
-                {
-                  if(!file_exists(Yii::$app->user->identity->image))
-                  {
-                    $image=Yii::$app->user->identity->image;
-                  }
-                  else
-                  {
-                    $image=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';
-                  }
-                }
-                else
-                {
-                  $image=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';            
-                }
-              }
+              // $nick_name="";
+              // if(Yii::$app->user->isGuest!=1)
+              // {
+                // $nick_name=Yii::$app->user->identity->nick_name;
+                // if(Yii::$app->user->identity->image!=null)
+                // {
+                  // if(!file_exists(Yii::$app->user->identity->image))
+                  // {
+                    // $image=Yii::$app->user->identity->image;
+                  // }
+                  // else
+                  // {
+                    // $image=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';
+                  // }
+                // }
+                // else
+                // {
+                  // $image=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';            
+                // }
+              // }
               ?>
               <img src="<?= $image ?>" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $nick_name ?></span>
+              <span class="hidden-xs"><?php //echo $nick_name ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -90,20 +90,20 @@ if(Yii::$app->user->isGuest==1)
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
-                <!--<div class="">
-                  <?//= Html::a('Profile',['/user/profile'],
-                             // ['class' => 'btn btn-success btn-flat']);                                  
-                  ?>
-                </div>-->
-                <div class="" style="margin-left: 14px;">
-                  <?= Html::a('Password',['/user/changepassword'],
-                              ['class' => 'btn btn-success btn-flat','title'=>'Change Password']);                                  
+                <div class="pull-left">
+                  <?= Html::a('Profile',['/user/profile'],
+                              ['class' => 'btn btn-default btn-flat']);                                  
                   ?>
                 </div>
-                <div class="">
+                <div class="pull-left" style="margin-left: 14px;">
+                  <?= Html::a('Password',['/user/changepassword'],
+                              ['class' => 'btn btn-default btn-flat','title'=>'Change Password']);                                  
+                  ?>
+                </div>
+                <div class="pull-right">
                   <!-- <a href="<?php //= Url::to(['site/logout']); ?>" class="btn btn-default btn-flat">Sign out</a> -->
                   <?= Html::a('Sign out',['/site/logout'],
-                              ['class' => 'btn btn-success btn-flat', 'data-method'=>'post']);                                  
+                              ['class' => 'btn btn-default btn-flat', 'data-method'=>'post']);                                  
                   ?>
                 </div>
               </li>

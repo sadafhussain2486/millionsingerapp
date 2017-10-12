@@ -5,15 +5,6 @@ namespace app\controllers;
 use Yii;
 use app\models\User;
 use app\models\UserSearch;
-use app\models\PushnotificationSearch;
-use app\models\Amount;
-//use app\models\CategoryUser;
-use app\models\CategorySearch;
-use app\models\NewsSearch;
-use app\models\FeedbackSearch;
-use app\models\GroupSearch;
-use app\models\AmountSearch;
-use app\models\SetTarget;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -56,8 +47,9 @@ class UserController extends Controller
      * @return mixed
      */
     public function actionIndex()
-    {           
-        $searchModel = new UserSearch();
+    {         
+		$model=new User();
+        /* $searchModel = new UserSearch();
         Yii::$app->language = 'zh-CN';
         //print_r(Yii::$app->session);
         //print_r(Yii::$app->request->queryParams);
@@ -65,10 +57,15 @@ class UserController extends Controller
         //echo Yii::t('app', 'Hello, {username}!', ['username' => $username]);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+         */
+		$data=$model->find()->where(['role'=>2])->all();
+		//$data1 = $model->attributes();
+	print_r(data);
+		/* return $this->render('index', [
+            //'searchModel' => $searchModel,
+            'dataProvider' => $data,
+        ]); */
+		return $this->render('dashboard',['data'=>$data1]);
     }
 
     /**
@@ -106,12 +103,12 @@ class UserController extends Controller
         if ($model->load(Yii::$app->request->post()) ) 
         {
             $data=Yii::$app->request->post();
-            //$regid=$model1->generateRegId();
+            $regid=$model1->generateRegId();
             $sessionkey = Yii::$app->getSecurity()->generateRandomString($length=20);  
             $otpcode=substr(mt_rand(100000,999999),0,6);
             $data["otp_code"]=$otpcode;
-            //$data["regid"]= $regid;
-            $data["session_key"]= $sessionkey;
+            $data["regid"]= $regid;
+            $data["token"]= $sessionkey;
             $data["password"]= md5($data['User']['password']);
             $data["image"]=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';
             $data["otpverify"]=1;
@@ -228,19 +225,7 @@ class UserController extends Controller
             ]);
         }
     }
-    public function actionUpdatesettarget($id)
-    {
-        /*$model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }*/
-        return $this->render('updatesettarget');
-    }
+    
 
     /**
      * Deletes an existing User model.
@@ -287,265 +272,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function actionViewincome($id)
-    {
-        $model = new User();
-        $model1 = new Amount(); 
-        $model2 = new CategoryUser(); 
-        $model3 = new UserSearch();
-        $model4 = new SetTarget();        
-        //$id=Yii::$app->request->get();
-        //print_r(Yii::$app->request->post());
-        $year = date("Y",strtotime(date('Y-m-d')));
-        //$month = date("m",strtotime(date('Y-m')));   
-        $searchmonth=@$_POST["analysiscat"];
-        $searchyear=@$_POST["analysisyear"];
-        (!empty($searchmonth))?$month=$searchmonth:$month=date('m');
-        (!empty($searchyear))?$monthyear=$searchyear:$monthyear=date('Y');        
-        $catdata=array();        
-        if(!empty($searchmonth))
-        {
-            $amountdata=$model1->find()->where(['status' => 1, 'type' => 1, 'user_id'=>$id, 'account'=>0,'DATE_FORMAT(selectdate,"%Y-%m")'=>$monthyear."-".$month])
-                                ->orderBy(['selectdate'=>SORT_DESC])
-                                ->all(); 
-
-            $expensedata=$model1->find()->where(['status' => 1, 'type' => 2, 'user_id'=>$id, 'account'=>'!=0','DATE_FORMAT(selectdate,"%Y-%m")'=>$monthyear."-".$month])
-                                ->orderBy(['selectdate'=>SORT_DESC])
-                                ->all(); 
-        }        
-        else
-        {
-            $amountdata=$model1->find()->where(['status' => 1, 'type' => 1, 'user_id'=>$id, 'account'=>0,'DATE_FORMAT(selectdate,"%Y-%m")'=>$monthyear."-".$month])
-                                ->orderBy(['selectdate'=>SORT_DESC])
-                                ->all(); 
-
-            $expensedata=$model1->find()->where(['status' => 1, 'type' => 2, 'user_id'=>$id, 'account'=>'!=0','DATE_FORMAT(selectdate,"%Y-%m")'=>$monthyear."-".$month])
-                                ->orderBy(['selectdate'=>SORT_DESC])
-                                ->all();   
-        }
-        $userdata=$model->find()->where(['id'=>$id])->one();   
-
-        //$maxDays=date('t');
-        //echo $currentDayOfMonth=date('w');
-        //$model3->getExpenseMonthWise($type=2,$user=1,$month='2017-07-04',$userid=2);
-        //THIS IS FOR SETTARGET SECTION ONLY         
-        $checkcurrentmntdata=$model4->find()->where(['user_id' => $id,'group_id'=>0,'DATE_FORMAT(created_date,"%Y-%m")'=>$year."-".$month, 'status' => 1])->limit(1)->one();
-
-        $targetdata=$model4->find()->where(['type'=>1,'user_id' => $id,'group_id' => 0, 'status' => 1])->orderBy(['id'=>SORT_DESC])->all();
-
-        $currenttargetdata=$model4->find()->where(['type'=>1,'user_id' => $id,'group_id' => 0,'DATE_FORMAT(created_date,"%Y-%m")'=>$year."-".$month, 'status' => 1])->one();
-        //print_r($currenttargetdata);
-        if(!empty($currenttargetdata))
-        {
-            $currenttarget=$currenttargetdata;
-        }
-        else
-        {
-            $currenttarget=array();
-        }
-        //echo $currenttarget;
-        ##############################################################
-        #               ANALYSIS PART START
-        ##############################################################
-        //$monthno=array('01','02','03','04','05','06','07','08','09','10','11','12');    
-        if(isset($searchmonth) && !empty($searchmonth))
-        {
-            if($searchyear==date('Y',strtotime('last year')))
-            {
-                $monthno=array('01','02','03','04','05','06','07','08','09','10','11','12'); 
-                $cashyear=date('Y',strtotime('last year'));
-            }   
-            else
-            {
-                if($searchmonth=="12month")
-                {
-                    for ($i = 0; $i <= 11; $i++){
-                        $monthno[] = date("Y-m", strtotime( date( 'Y-m-01' )." -$i months"));
-                    }
-                    $cashyear="";
-                }
-                else
-                {
-                    $monthno=array('01','02','03','04','05','06','07','08','09','10','11','12'); 
-                    $cashyear=date('Y');
-                }
-            }
-        }
-        else
-        {
-            if($searchyear==date('Y',strtotime('last year')))
-            {
-                $monthno=array('01','02','03','04','05','06','07','08','09','10','11','12'); 
-                $cashyear=date('Y',strtotime('last year'));
-
-            }   
-            else
-            {
-                $monthno=array('01','02','03','04','05','06','07','08','09','10','11','12'); 
-                $cashyear=date('Y');
-            }            
-        }    
-        //print_r($monthno);
-        //$currentyear=date('Y');
-        $i=1;
-        $j=1;
-        $connection = Yii::$app->getDb();
-        foreach ($monthno as $cashinmonth) 
-        {
-            //Cash In (Income)            
-            $commandamtindi = $connection->createCommand("SELECT sum(amount) FROM amount where DATE_FORMAT(selectdate,'%Y-%m')='".trim($cashyear."-".$cashinmonth,'-')."' AND type=1 and account=0 and status=1 and recordbudget=1 and user_id=".$id."");
-            $analysiscashin['cashin'][$i++] = $commandamtindi->queryAll();
-
-            //Cash Out (Expense)
-            $commandamtexp = $connection->createCommand("SELECT sum(amount) FROM amount where DATE_FORMAT(selectdate,'%Y-%m')='".trim($cashyear."-".$cashinmonth,'-')."' AND type=2 and account=0 and status=1 and recordbudget=1 and user_id=".$id."");
-            $analysiscashin['cashout'][$j++] = $commandamtexp->queryAll();
-        }
-        
-        //CATEGORY SECTION    
-        //$analsmonth=(!empty($_POST["analysiscat"]))?date("m",strtotime(date('Y-'.$_POST["analysiscat"]))):date('m');
-        $analsmonth=$month;
-        ##################---NEW BUDGET----------#######################
-        // $newbudget["withoutbudget"]=$model1->find()->where(['type'=>2,'DATE_FORMAT(selectdate, "%Y-%m")' => $monthyear."-".$analsmonth,'user_id' => $id,'account' => 0,'recordbudget'=>1])->groupBy(['category_id'])->all();
-        $newbudget["withbudget"]=$model2->find()->where(['user_id'=>$id,'group_id' => 0,'DATE_FORMAT(created_date,"%Y-%m")'=>$monthyear."-".$analsmonth,'status'=>'1'])->all();
-      
-        //print_r($newbudgetdata);
-        //$analcategory=$ucatdata;
-
-        ##################---NEW BUDGET END------#######################
-        $ucatdata=$model2->find()->where(['user_id'=>$id,'group_id' => 0,'DATE_FORMAT(created_date,"%Y-%m")'=>$monthyear."-".$analsmonth,'status'=>'1'])->all();
-        $analcategory=$ucatdata;
-        $ace=1;
-        foreach ($analcategory as $analcatval) 
-        {
-            //Analysis Category wise  (Expense)            
-            // $commandamtexp = $connection->createCommand("SELECT sum(amount) FROM amount where DATE_FORMAT(selectdate,'%Y-%m')='".trim($cashyear."-".$analsmonth,'-')."' AND type=2 and account=0 and status=1 and recordbudget=1 and user_id=".$id." and category_id=".$analcatval["category_id"]."");
-            $analysiscatexp['analycatexp'][$ace++] = $commandamtexp->queryAll();
-        }
-        //print_r($analysiscatexp);
-        if(empty($analysiscatexp))
-        {
-            $analysiscatexp[]=0;
-        }
-        //Analysis Total Sum       
-        $commandamttotexp = $connection->createCommand("SELECT sum(amount) FROM amount where DATE_FORMAT(selectdate,'%Y-%m')='".trim($cashyear."-".$analsmonth,'-')."' AND type=2 and account=0 and status=1 and recordbudget=1 and user_id=".$id."");
-        $analysiscattotexp = $commandamttotexp->queryAll();
-        $totalanacatexp=(empty($analysiscattotexp[0]['sum(amount)']))?'1':$analysiscattotexp[0]['sum(amount)'];
-        //print_r($analysiscatexp);
-        //END CATEGORY SECTION
-        //print_r($analysiscashin);
-
-        
-        ##############################################################
-        #               ANALYSIS PART END
-        ##############################################################
-
-        #################------RETURN DATA------######################
-        // $catdata=['amount'=>$amountdata,'expense'=>$expensedata,'user'=>$userdata,'newbudgetdata'=>$newbudget,'categoryuser'=>$ucatdata,'targetuserdata'=>$targetdata,'currentmonth'=>$checkcurrentmntdata,'cashflow'=>$analysiscashin,'anaycatamt'=>$analysiscatexp,'anaycattotalamt'=>$totalanacatexp,'currenttarget'=>$currentmonthtarget["suggest_target"]];
-        //print_r($catdata);
-        echo $this->render('viewincome',[
-         'catdata' =>$catdata,
-         'currenttarget'=>$currenttarget
-        ]);
-    }
-    public function actionDisplaysummary()
-    {
-        $id = Yii::$app->request->post('id');
-        $data=array();
-        if (isset($id)) 
-        {
-            $mnt=Yii::$app->request->post('month');
-            $model= new SetTarget();
-            $model1 = new CategoryUser(); 
-            $model2= new UserSearch();
-            $model3 = new CategorySearch(); 
-            $connection = Yii::$app->getDb();
-
-            $year = date("Y",strtotime(date('Y-m-d')));
-            $month = date("m",strtotime(date('Y-'.$mnt)));  
-
-            //FIND CURRENT SET TARGET 
-            $currentmonthtarget=$model->find()->where(['user_id' => $id,'group_id' =>0,'DATE_FORMAT(created_date,"%Y-%m")'=>$year."-".$month, 'status' => 1])->limit(1)->orderBy(['id'=>SORT_DESC])->one();  
-
-            //Cash In (Income)
-            $commandamtindi = $connection->createCommand("SELECT sum(amount) FROM amount where DATE_FORMAT(selectdate,'%Y-%m')='".$year."-".$month."' AND type=1 and account=0 and status=1 and recordbudget=1 and user_id=".$id."");
-            $analysiscashin=$commandamtindi->queryAll();
-            $analcashin=round($analysiscashin[0]['sum(amount)']);
-            //Cash Out (Expense)
-
-            $commandamtexp = $connection->createCommand("SELECT sum(amount) FROM amount where DATE_FORMAT(selectdate,'%Y-%m')='".$year."-".$month."' AND type=2 and account=0 and status=1 and recordbudget=1 and user_id=".$id."");
-            $analysiscashout=$commandamtexp->queryAll();     
-            $analcashout=round($analysiscashout[0]['sum(amount)']);
-
-            //NET CASH FLOW
-            $netcashflow=($analcashin-$analcashout);
-            if($analcashin>=$analcashout)
-            {
-                $targetachi="Passed";
-            }
-            else
-            {
-                $targetachi="Failed";
-            }
-
-            ###########################################################################
-            #       BUDGET SECTION
-            ###########################################################################
-            //Total Budget
-            // $commandbudgettot = $connection->createCommand("SELECT sum(amount) FROM category_user where DATE_FORMAT(created_date,'%Y-%m')='".$year."-".$month."' and group_id=0 and status=1 and user_id=".$id."");
-            $analysisbudgettot=$commandbudgettot->queryAll();
-            $budgettotal=round($analysisbudgettot[0]['sum(amount)']);
-
-            //Top Spent
-            $ucatdata=$model1->find()->where(['user_id'=>$id,'group_id' => 0,'DATE_FORMAT(created_date,"%Y-%m")'=>$year."-".$month,'status'=>'1'])->all();
-            $prevmax=0;
-            $prevmin=0;
-            $maxval=0;
-            $minval=0;
-            $category="";
-            $categorymin="";
-            foreach ($ucatdata as $budgetvalue) 
-            {
-                // $expget=$model2->getExpenseMonthWise($type=2,$user=1,$monthn=$year.'-'.$month,$budgetvalue["user_id"],$budgetvalue["category_id"]);
-
-                // $minarr[$budgetvalue["category_id"]]=$expget;
-
-                //$expminget=$model2->getExpenseMonthWise($type=2,$user=1,$monthm=$year.'-'.$month,$budgetvalue["user_id"],$budgetvalue["category_id"]);
-                /*echo $expminget.'-'.$budgetvalue["category_id"];
-                if(!empty($expget))
-                {                    
-                    if($expget>$prevmax)
-                    {
-                        $maxval=$expget;
-                        $category=$model3->categoryname($budgetvalue["category_id"]);
-                    }
-                    $prevmax=$expget;
-                }
-
-                if(!empty($expminget))
-                {                    
-                    if($expminget<$prevmin)
-                    {
-                        $minval=$expminget;
-                        $categorymin=$model3->categoryname($budgetvalue["category_id"]);
-                    }
-                    $prevmin=$expminget;
-                }*/                
-            }
-            
-            $value['minkey']=array_keys($minarr, min($minarr));
-            // $categorymin=$model3->categoryname($value['minkey'][0]);
-            $minval=min($minarr);
-
-            $value['maxkey']=array_keys($minarr, max($minarr));
-            // $categorymax=$model3->categoryname($value['maxkey'][0]);
-            $maxval=max($minarr);
-            
-            //Spent
-            $budgetdiff=($budgettotal-$analcashout);
-            // $result=array('totalinome'=>$analcashin,'totalexpense'=>$analcashout,'settarget'=>round($currentmonthtarget['suggest_target']),'netcashflow'=>$netcashflow,'targetachi'=>$targetachi,'budgettotal'=>$budgettotal,'budgetdiff'=>$budgetdiff,'budgettopspent'=>$maxval,'maxcategory'=>$categorymax,'budgetminspent'=>$minval,'mincategory'=>$categorymin);
-            echo json_encode($result);
-        }        
-    }
+    
     public function actionDashboard()
     {
         //TOTAL DISPLAY SECTION
@@ -553,17 +280,17 @@ class UserController extends Controller
         $user=$model1->find()->where(['status'=>1])->andWhere(['!=','role', '1'])->all();
         $cntuser=count($user);
 
-        // $model2 = new CategorySearch(); 
-        // $category=$model2->find()->where(['status'=>1])->all();
-        // $cntcategory=count($category);
+        /* $model2 = new CategorySearch(); 
+        $category=$model2->find()->where(['status'=>1])->all();
+        $cntcategory=count($category);
 
-        // $model3 = new NewsSearch(); 
-        // $news=$model3->find()->where(['status'=>1])->all();
-        // $cntnews=count($news);
+        $model3 = new NewsSearch(); 
+        $news=$model3->find()->where(['status'=>1])->all();
+        $cntnews=count($news);
 
-        // $model4 = new FeedbackSearch(); 
-        // $feedback=$model4->find()->where(['status'=>1])->all();
-        // $cntfeedback=count($feedback);
+        $model4 = new FeedbackSearch(); 
+        $feedback=$model4->find()->where(['status'=>1])->all();
+        $cntfeedback=count($feedback);
 
         //GRID SECTION
         $weeklastdate=date('Y-m-d', strtotime('-7 days'));
@@ -574,96 +301,20 @@ class UserController extends Controller
                                 ->all();
 
         //Group Section
-        // $model5 = new GroupSearch(); 
-        // $weekgroup=$model5->find()->where(['status'=>1])
-                                // ->andWhere(['>=','created_date', $weeklastdate])
-                                // ->all();
+        $model5 = new GroupSearch(); 
+        $weekgroup=$model5->find()->where(['status'=>1])
+                                ->andWhere(['>=','created_date', $weeklastdate])
+                                ->all();
 
         //Income Section
-        // $model6 = new AmountSearch(); 
-        // $acctype=isset($_POST['incexpfilter'])?$_POST['incexpfilter']:'0';
-        // $weekincome=$model6->find()->where(['status'=>1,'account'=>$acctype])
-                                // ->andWhere(['>=','selectdate', $weeklastdate])
-                                // ->all();
+        $model6 = new AmountSearch(); 
+        $acctype=isset($_POST['incexpfilter'])?$_POST['incexpfilter']:'0';
+        $weekincome=$model6->find()->where(['status'=>1,'account'=>$acctype])
+                                ->andWhere(['>=','selectdate', $weeklastdate])
+                                ->all();
 
-        $connection = Yii::$app->getDb();
-        #########################################################################
-                                //Chart Section INDIVIDUAL SECTION
-        #########################################################################
-        $posttype=$_POST["expensechart"];
-        if(empty($_POST["expensechart"]) || $posttype==1)
-        {
-            //Individual Section GET Category
-            // $expindicat=$model6->find()->where(['type'=>2,'account'=>0,'status'=>1])
-                                    // ->groupBy('category_id')
-                                    // ->all(); 
-            if(!empty($expindicat))
-            {
-                //Chart Dashboard Exp Indi
-                foreach ($expindicat as $expindival) {
-                    $getcategindi[]=$model2->find()->where(['id'=>$expindival['category_id']])->one(); 
-                }
-            }
-            // $expindi=$model6->find()->where(['type'=>2,'account'=>0,'status'=>1])->all();        
-
-            if(!empty($expindi))
-            {
-                //GETTING TOTAL SUM
-                $expinditotalsum="";
-                foreach ($expindi as $expindivalue) {
-                    $expinditotalsum+=$expindivalue['amount']; 
-                }
-                //GETTING PERCENTAGE                   
-                foreach ($expindicat as $expindival) {                
-                    $commandamtindi = $connection->createCommand("SELECT sum(amount) FROM amount where type=2 and account=0 and recordbudget=1 and status=1 and category_id=".$expindival['category_id']."");
-                    $dataindiexp = $commandamtindi->queryAll();
-                    $dataindiexpview[] =round($dataindiexp[0]['sum(amount)']);
-                    $expinditotallist[]=round(($dataindiexp[0]['sum(amount)']*100)/$expinditotalsum,2);
-                }
-                $showlistexpindi=implode(",", $expinditotallist);
-                //print_r($dataindiexpview);
-            }
-        }           
-
-        #########################################################################
-                            //Chart Section FAMILY SECTION
-        #########################################################################
-        if(isset($_POST["expensechart"]) && $posttype==2 || $posttype==3)
-        {
-            //Family Section GET Category
-            $expfamilycat=$connection->createCommand("SELECT * FROM amount where `type`=2 and `account`!=0 and status=1 and recordbudget=1 GROUP BY category_id");
-            $expfamilycategory = $expfamilycat->queryAll(); 
-            foreach ($expfamilycategory as $expfamilyvalue) 
-            {
-                $arrayfamilycate=$model2->find()->where(['id'=>$expfamilyvalue['category_id'],'applied_for'=>$posttype])->one();
-                if(!empty($arrayfamilycate))
-                {
-                    $getcategindi[]=$arrayfamilycate;    
-                }                
-            }           
-            if(!empty($getcategindi))
-            {
-                //GETTING TOTAL SUM
-                $expinditotalsum="";
-                foreach ($getcategindi as $expindivalue) 
-                {
-                    $commandamtindi = $connection->createCommand("SELECT sum(amount) FROM amount where type=2 and status=1 and recordbudget=1 and category_id=".$expindivalue['id']."");
-                    $expamtfamily = $commandamtindi->queryAll(); 
-                    $expinditotalsum+=$expamtfamily[0]['sum(amount)']; 
-                }
-                //echo $expinditotalsum;
-                //GETTING PERCENTAGE  
-                foreach ($getcategindi as $expindival) {                
-                    $commandamtindi = $connection->createCommand("SELECT sum(amount) FROM amount where type=2 and status=1 and recordbudget=1 and category_id=".$expindival['id']."");
-                    $dataindiexp = $commandamtindi->queryAll(); 
-                    $dataindiexpview[] =round($dataindiexp[0]['sum(amount)']);
-                    $expinditotallist[]=round(($dataindiexp[0]['sum(amount)']*100)/$expinditotalsum,2);
-                }
-                $showlistexpindi=implode(",", $expinditotallist);
-                //print_r($dataindiexpview);
-            }
-        }
-
+        $connection = Yii::$app->getDb(); */
+        
         $data=array('category'=>$cntcategory,'news'=>$cntnews,'users'=>$cntuser,'feedback'=>$cntfeedback,'weekuser'=>$weekuser,'weekgroup'=>$weekgroup,'weekincome'=>$weekincome,'expchartindi'=>array('categorylist'=>$getcategindi,'categoryper'=>$showlistexpindi,'expinditotallist'=>$expinditotallist));
 
         echo $this->render('dashboard',['dashboarddata'=>$data]);

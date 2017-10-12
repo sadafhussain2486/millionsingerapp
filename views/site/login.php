@@ -17,9 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="login-left-side" style="background-image:url('<?php echo Yii::getAlias('@web/assets/f45111d2/dist/img/login-bg.png')?>');">
         <div class="site-login">
             <!-- <h1><?php //= Html::encode($this->title) ?></h1> -->
-            <!--<div align="center" style="margin-bottom: 20px;">
-                <img class="loginlogo" src="<?php echo Yii::getAlias('@web/assets/f45111d2/dist/img/login-logo.png')?>"/>
-            </div>-->
+            <div align="center" style="margin-bottom: 20px;">
+                <img class="loginlogo" src="<?php echo Yii::getAlias('@web/assets/logo_icon.png')?>" style="width: 100px;"/>
+            </div>
 
             <?php $form = ActiveForm::begin([
                 'id' => 'login-form',
@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <div class="form-group">
                     <div class="col-lg-12">
-                        <?= Html::submitButton('Login', ['class' => 'btn btn-lg btn-color', 'name' => 'login-button','style'=>'width:100%']) ?>
+                        <?= Html::submitButton('Login', ['class' => 'btn btn-lg btn-color login-btnn', 'name' => 'login-button','style'=>'width:100%']) ?>
                     </div>
                 </div>                
                 <!--<div align="center" class="copyright">

@@ -9,41 +9,41 @@
       <div class="user-panel">
         <div class="pull-left image">
           <?php 
-          $image="";
-          $nick_name="";
-          if(Yii::$app->user->isGuest!=1)
-          {
-            if(Yii::$app->user->identity->image!=null)
-            {
-              if(!file_exists(Yii::$app->user->identity->image))
-              {
-                $image=Yii::$app->user->identity->image;
-              }
-              else
-              {
-                $image=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';
-              }
-            }
-            else
-            {
-              $image=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';            
-            }
-          }
+          // $image="";
+          // $nick_name="";
+          // if(Yii::$app->user->isGuest!=1)
+          // {
+            // if(Yii::$app->user->identity->image!=null)
+            // {
+              // if(!file_exists(Yii::$app->user->identity->image))
+              // {
+                // $image=Yii::$app->user->identity->image;
+              // }
+              // else
+              // {
+                // $image=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';
+              // }
+            // }
+            // else
+            // {
+              // $image=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';            
+            // }
+          // }
           ?>
-          <img src="<?= $image ?>" class="img-circle" alt="User Image">
+          <p><?php //echo $nick_name; ?></p>
+          <ul><a href="#"><i class="fa fa-circle text-success"></i> Online</a></ul>
         </div>
         <div class="pull-left info">
-          <p><?php echo $nick_name; ?></p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          
         </div>
-      </div>      
+      </div>  
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="<?php echo(Yii::$app->controller->id=='user' && Yii::$app->controller->action->id=='dashboard')?'active':'';?>">
+        <!--<li class="<?php echo(Yii::$app->controller->id=='user' && Yii::$app->controller->action->id=='dashboard')?'active':'';?>">
           <a href="<?php echo Url::to(['user/dashboard']); ?>">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
-        </li>
+        </li>-->
 
         <li class="<?php echo(Yii::$app->controller->id=='user' && Yii::$app->controller->action->id!='dashboard' && Yii::$app->controller->action->id!='outbox' && Yii::$app->controller->action->id!='mail' && Yii::$app->controller->action->id!='setting' || Yii::$app->controller->id=='amount' || Yii::$app->controller->id=='target')?'active':'';?>">
           <a href="<?php echo Url::to(['user/index']); ?>">
@@ -53,11 +53,69 @@
         </li>
         <!-- Yii::$app->controller->action->id=='index' || Yii::$app->controller->action->id=='create' || Yii::$app->controller->action->id=='update' || Yii::$app->controller->action->id=='viewincome' || -->
 
-
-           
+       <!-- <li class="<?php echo(Yii::$app->controller->id=='category')?'active':'';?>">
+          <a href="#">
+            <i class="fa fa-tags"></i> <span>Category</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="<?php echo(Yii::$app->controller->id=='category' && Yii::$app->controller->action->id=='index')?'active':'';?>"><a href="<?php echo Url::to(['category/index']); ?>"><i class="fa fa-user"></i> Individual</a></li>
+            <li class="<?php echo(Yii::$app->controller->id=='category' && Yii::$app->controller->action->id=='family' || Yii::$app->controller->action->id=='company')?'active':'';?>">
+              <a href="#"><i class="fa fa-users"></i> Group
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li class="<?php echo(Yii::$app->controller->id=='category' && Yii::$app->controller->action->id=='family')?'active':'';?>"><a href="<?php echo Url::to(['category/family']); ?>"><i class="fa fa-circle-o"></i> Family</a></li>
+                <li class="<?php echo(Yii::$app->controller->id=='category' && Yii::$app->controller->action->id=='company')?'active':'';?>"><a href="<?php echo Url::to(['category/company']); ?>"><i class="fa fa-circle-o"></i> Company</a></li>
+              </ul>
+            </li>
+            <li class="<?php echo(Yii::$app->controller->id=='category' && Yii::$app->controller->action->id=='create')?'active':'';?>"><a href="<?php echo Url::to(['category/create']); ?>"><i class="fa fa-plus"></i> Create</a></li>
           </ul>
-        
-       
+        <!--</li>
+        <li class="<?php echo(Yii::$app->controller->id=='group' || Yii::$app->controller->id=='groupmember')?'active':'';?>">
+          <a href="<?php echo Url::to(['group/index']); ?>">
+            <i class="fa fa-object-group"></i>
+            Group
+          </a>          
+        </li>
+        <li class="<?php echo(Yii::$app->controller->id=='news')?'active':'';?>">
+          <a href="<?php echo Url::to(['news/index']); ?>">
+            <i class="fa fa-newspaper-o"></i> News</a>
+        </li>
+        <li class="<?php echo(Yii::$app->controller->id=='pages')?'active':'';?>">
+          <a href="<?php echo Url::to(['pages/index']); ?>">
+            <i class="fa fa-file-text-o"></i> Pages</a>
+        </li>        
+        <li class="<?php echo(Yii::$app->controller->id=='feedback')?'active':'';?>">
+          <a href="<?php echo Url::to(['feedback/index']); ?>">
+            <i class="fa fa-commenting-o"></i>
+            Feedback
+            </a>
+        </li> 
+        <li class="<?php echo(Yii::$app->controller->id=='adsmgmt')?'active':'';?>">
+          <a href="<?php echo Url::to(['adsmgmt/index']); ?>">
+            <i class="fa fa-buysellads"></i>Ads Mgmt.          
+          </a>          
+        </li>
+        <li class="<?php echo(Yii::$app->controller->id=='pushnotification')?'active':'';?>">
+          <a href="<?php echo Url::to(['pushnotification/index']); ?>">
+            <i class="fa fa-bell"></i>Push Notification            
+          </a>          
+        </li>
+        <li class="<?php echo(Yii::$app->controller->action->id=='outbox' || Yii::$app->controller->action->id=='mail')?'active':'';?>">
+          <a href="<?php echo Url::to(['user/outbox']); ?>">
+            <i class="fa fa-envelope"></i>Email            
+          </a>          
+        </li>
+        <li class="<?php echo(Yii::$app->controller->action->id=='setting')?'active':'';?>">
+          <a href="<?php echo Url::to(['user/setting']); ?>">
+            <i class="fa fa-cog"></i>Setting            
+          </a>          
+        </li> -->
         <!--
         <li class="treeview">
           <a href="#">
