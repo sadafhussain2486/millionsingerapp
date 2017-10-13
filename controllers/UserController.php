@@ -70,7 +70,9 @@ class UserController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
-
+ public function actionViewDet()
+    {    
+	}	
     /**
      * Displays a single User model.
      * @param string $id
@@ -106,37 +108,45 @@ class UserController extends Controller
         if ($model->load(Yii::$app->request->post()) ) 
         {
             $data=Yii::$app->request->post();
+			$model->nick_name = $data["User"]["nick_name"];
+			$model->location = $data["User"]["location"];
+			$model->age = $data["User"]["age"];
+			$model->horoscope = $data["User"]["horoscope"];
+			$model->dob = $data["User"]["dob"];
+			$model->intro = $data["User"]["intro"];
+			$model->image = $_FILES['User']['name']['image'];
             //$regid=$model1->generateRegId();
             $sessionkey = Yii::$app->getSecurity()->generateRandomString($length=20);  
-            $otpcode=substr(mt_rand(100000,999999),0,6);
-            $data["otp_code"]=$otpcode;
+            // $otpcode=substr(mt_rand(100000,999999),0,6);
+            // $data["otp_code"]=$otpcode;
             //$data["regid"]= $regid;
-            $data["session_key"]= $sessionkey;
-            $data["password"]= md5($data['User']['password']);
-            $data["image"]=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';
-            $data["otpverify"]=1;
+            // $data["session_key"]= $sessionkey;
+            // $data["password"]= md5($data['User']['password']);
+            // $data["image"]=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';
+            $data["verify_no"]=1;
             $data["status"]=1;
             $data["role"]=2;
-            $data["register_by"]=1;
-            $data["created_date"]=date("Y-m-d g:i:s");
-            $data["last_update_date"]=date("Y-m-d g:i:s");
+			// $data["lang"]=2;
+            $data["registration_type"]=1;
+            $data["created_date"]=date("Y-m-d g:i:a");
+            $data["updated_date"]=date("Y-m-d g:i:a");
             $model->scenario = User::SCENARIO_CREATE;
             $model->attributes = $data;
-            if($data['User']['password']==$data['confirmpassword'])
+            if($data['User']['number'])
             {
                 if($model->save())
                 {
                     //SEND MAIL
-                    $to=$data["username"];
-                    $subject="This is Registration Mail";
-                    $username=$data["nick_name"];
-                    $from=Yii::$app->params['adminEmail'];
-                    $fromname=Yii::$app->params['adminName'];
+                    // $to=$data["name"];
+                    // $subject="This is Registration Mail";
+                    // $username=$data["nick_name"];
+                    // $from=Yii::$app->params['adminEmail'];
+                    // $fromname=Yii::$app->params['adminName'];
                     //$message="Thankyou for Register With us <br><br> This is OTP code: ".$otpcode;
-                    require_once('email/registration.php');        //Message Variable Come From This File
-                    $returnmail=Yii::$app->mycomponent->Simplmail($to,$subject,$message,$from,$fromname);
+                    // require_once('email/registration.php');        //Message Variable Come From This File
+                    // $returnmail=Yii::$app->mycomponent->Simplmail($to,$subject,$message,$from,$fromname);
                     //END MAIL
-                    if($_FILES['User']['name']['image']!="")
+                    /*if($_FILES['User']['name']['image']!="")
                     {
                         if($_FILES['User']['size']['image']<=2097152)    //2097152=2MB
                         {
@@ -154,8 +164,8 @@ class UserController extends Controller
                             $updatearr=array('image' => $img);
                             $upd=$model->updateAll($updatearr, 'id = '.$id);   
                         } 
-                    }          
-                    return $this->redirect(['viewincome', 'id' => $model->id]);
+                    }*/          
+                    return $this->redirect(['index']);
                 }
                 else 
                 {
@@ -168,7 +178,7 @@ class UserController extends Controller
             {
                 ?>
                 <script type="text/javascript">
-                    alert("Password And Confirm Password Not Match.")
+                    alert("Something Wrong")
                 </script>
                 <?php
                 return $this->render('create', [
@@ -286,8 +296,20 @@ class UserController extends Controller
             'model' => $model,
         ]);
     }
+ public function actionViewdetail($id)
+    {
+		$model = new User();
+		$userdata=$model->find()->where(['id'=>$id])->one(); 
+		// $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-    public function actionViewincome($id)
+        return $this->render('viewdetail', [
+            'model' => $model,
+            'userdata' => $userdata,
+        ]);
+		// echo 'user';
+		print_r($userdata);
+	}
+    public function actionViewincome1($id)
     {
         $model = new User();
         $model1 = new Amount(); 
@@ -442,7 +464,7 @@ class UserController extends Controller
         #################------RETURN DATA------######################
         // $catdata=['amount'=>$amountdata,'expense'=>$expensedata,'user'=>$userdata,'newbudgetdata'=>$newbudget,'categoryuser'=>$ucatdata,'targetuserdata'=>$targetdata,'currentmonth'=>$checkcurrentmntdata,'cashflow'=>$analysiscashin,'anaycatamt'=>$analysiscatexp,'anaycattotalamt'=>$totalanacatexp,'currenttarget'=>$currentmonthtarget["suggest_target"]];
         //print_r($catdata);
-        echo $this->render('viewincome',[
+        echo $this->render('viewincome1',[
          'catdata' =>$catdata,
          'currenttarget'=>$currenttarget
         ]);

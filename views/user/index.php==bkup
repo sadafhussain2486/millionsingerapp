@@ -21,7 +21,7 @@ $this->title = 'Users';
     <div class="panel panel-primary">
         <div class="panel-heading" style="padding-bottom:22px;">
             <?php echo $this->title; ?>
-            <?= Html::a('<span class="fa fa-plus-circle"></span> Add User', ['create'], ['class' => 'btn btn-warning pull-right crt_user']) ?>
+            <?= Html::a('Create User', ['create'], ['class' => 'btn btn-warning pull-right crt_user']) ?>
             </div>           
 
         <?= GridView::widget([            
@@ -50,7 +50,7 @@ $this->title = 'Users';
 
                     'header' => 'Actions',
                     //'headerOptions' => '',//$data->rate->name
-                    'template' => '{viewdetail}',//{update}{delete}{resetpassword}',   //{view}
+                    'template' => '{viewincome}',//{update}{delete}{resetpassword}',   //{view}
                     'buttons' => [
                         // 'view' => function ($url, $model) {
                             // return Html::a('<span class="btn btn-primary btn-xs glyphicon glyphicon-eye-open "></span> || ', $url, [
@@ -61,7 +61,7 @@ $this->title = 'Users';
 										
                             // ]);
                         // },
-                        'viewdetail' => function ($url, $model) {
+                        'viewincome' => function ($url, $model) {
                             return Html::a('<span class="btn ico_hide btn-success btn-xs fa fa-eye"></span>', '#', [
                                         'title' => Yii::t('app', 'View All Detail'),
                                         'data-toggle'=>'tooltip',

@@ -43,7 +43,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['create'] = ['username', 'password', 'otp_code','otpverify', 'device_id', 'registration_type', 'status', 'role','created_date', 'updated_date'];
+        $scenarios['create'] = ['username', 'password', 'otp_code','verify_no', 'device_id', 'registration_type', 'status', 'role','created_date', 'updated_date'];
         return $scenarios;
     }
 
@@ -59,7 +59,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             [[/*'registration_id',*/  'number'/*, 'lname', 'name', 'password', 'device_type', 'facebook_id', 'image'*, 'number'/*, 'alternate_no', 'otp_code', 'device_id', 'nick_name', 'occupation', 'gender', 'age',*/ /*'status',*/ /*'registration_type', 'opening_balance'*//*, 'created_date', 'last_update_date'*/], 'required'],
-            [[ 'status', 'registration_type', 'lang'], 'integer'],
+            [[ 'status', 'registration_type', 'device_type', 'lang'], 'integer'],
             //[['created_date', 'last_update_date'], 'safe'],
             [[/*'registration_id',*/ 'number'], 'string', 'max' => 100],
             [[ 'password', 'fb_id', 'image', 'device_id', 'session_key'], 'string', 'max' => 255],

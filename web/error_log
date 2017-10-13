@@ -1,0 +1,927 @@
+[10-Oct-2017 13:15:57 UTC] PHP Warning:  require(/home/eb01com/public_html/millionsinger/web/../config/web.php): failed to open stream: No such file or directory in /home/eb01com/public_html/millionsinger/web/index.php on line 10
+[10-Oct-2017 13:15:57 UTC] PHP Fatal error:  require(): Failed opening required '/home/eb01com/public_html/millionsinger/web/../config/web.php' (include_path='.:/opt/cpanel/ea-php56/root/usr/share/pear') in /home/eb01com/public_html/millionsinger/web/index.php on line 10
+[10-Oct-2017 14:00:04 UTC] An Error occurred while handling another error:
+exception 'ReflectionException' with message 'Method yii\widgets\BaseListView::yii\widgets\{closure}() does not exist' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php:199
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(199): ReflectionMethod->__construct('yii\\widgets\\Bas...', 'yii\\widgets\\{cl...')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/callStackItem.php(26): yii\web\ErrorHandler->addTypeLinks('yii\\widgets\\Bas...')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(308): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/exception.php(385): yii\web\ErrorHandler->renderCallStackItem(NULL, NULL, 'yii\\widgets\\Bas...', 'yii\\widgets\\{cl...', Array, 13)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(114): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#11 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\base\UnknownPropertyException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\base\UnknownPropertyException))
+#13 {main}
+Previous exception:
+exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\User::regid' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Component.php:147
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/db/BaseActiveRecord.php(286): yii\base\Component->__get('regid')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/helpers/BaseArrayHelper.php(209): yii\db\BaseActiveRecord->__get('regid')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(216): yii\helpers\BaseArrayHelper::getValue(Object(app\models\User), 'regid')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(227): yii\grid\DataColumn->getDataCellValue(Object(app\models\User), 2, 0)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/Column.php(110): yii\grid\DataColumn->renderDataCellContent(Object(app\models\User), 2, 0)
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(507): yii\grid\Column->renderDataCell(Object(app\models\User), 2, 0)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(476): yii\grid\GridView->renderTableRow(Object(app\models\User), 2, 0)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(347): yii\grid\GridView->renderTableBody()
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(155): yii\grid\GridView->renderItems()
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(316): yii\widgets\BaseListView->renderSection('{items}')
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(130): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(133): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#13 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(291): yii\widgets\BaseListView->run()
+#14 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Widget.php(139): yii\grid\GridView->run()
+#15 /home/eb01com/public_html/millionsinger/views/user/index.php(104): yii\base\Widget::widget(Array)
+#16 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#17 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#18 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(152): yii\base\View->renderFile('/home/eb01com/p...', Array, Object(app\controllers\UserController))
+#19 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(381): yii\base\View->render('index', Array, Object(app\controllers\UserController))
+#20 /home/eb01com/public_html/millionsinger/controllers/UserController.php(62): yii\base\Controller->render('index', Array)
+#21 [internal function]: app\controllers\UserController->actionIndex()
+#22 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#23 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#24 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('index', Array)
+#25 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('user/index', Array)
+#26 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 /home/eb01com/public_html/millionsinger/web/index.php(12): yii\base\Application->run()
+#28 {main}
+$_SERVER = [
+    'TZ' => 'Etc/GMT',
+    'REDIRECT_REDIRECT_UNIQUE_ID' => 'WdzSZLS5Zu4XZIjZSkA4mgAAACc',
+    'REDIRECT_REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_STATUS' => '200',
+    'REDIRECT_UNIQUE_ID' => 'WdzSZLS5Zu4XZIjZSkA4mgAAACc',
+    'REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_HANDLER' => 'application/x-httpd-ea-php56',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'WdzSZLS5Zu4XZIjZSkA4mgAAACc',
+    'SCRIPT_URL' => '/millionsinger/web/user/index',
+    'SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'HTTP_HOST' => 'eb01.com.hk',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.0; rv:52.0) Gecko/20100101 Firefox/52.0',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_COOKIE' => 'adminer_version=4.3.1; _csrf=992c1987e5fcd59bba190ca74b4acc0727ad686f2e394cfd5d3e91061585ae64a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22MgV2GZ-AGL9OyhitEPL7FxFozosuzo7G%22%3B%7D; PHPSESSID=8ph0cbe3r4uos0p35ln2l5otp1',
+    'HTTP_CONNECTION' => 'keep-alive',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'PATH' => '/usr/local/jdk/bin:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin:/usr/local/bin:/usr/X11R6/bin:/root/bin:/opt/bin',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'eb01.com.hk',
+    'SERVER_ADDR' => '137.59.149.120',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '103.80.61.11',
+    'DOCUMENT_ROOT' => '/home/eb01com/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '/cgi-sys',
+    'CONTEXT_DOCUMENT_ROOT' => '/usr/local/cpanel/cgi-sys/',
+    'SERVER_ADMIN' => 'webmaster@eb01.com.hk',
+    'SCRIPT_FILENAME' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'REMOTE_PORT' => '55297',
+    'REDIRECT_URL' => '/millionsinger/web/index.php',
+    'GATEWAY_INTERFACE' => 'CGI/1.1',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/millionsinger/web/user/index',
+    'SCRIPT_NAME' => '/millionsinger/web/index.php',
+    'ORIG_SCRIPT_FILENAME' => '/usr/local/cpanel/cgi-sys/ea-php56',
+    'ORIG_PATH_INFO' => '/millionsinger/web/index.php',
+    'ORIG_PATH_TRANSLATED' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'ORIG_SCRIPT_NAME' => '/cgi-sys/ea-php56',
+    'PHP_SELF' => '/millionsinger/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1507644004.1686050891876220703125,
+    'REQUEST_TIME' => 1507644004,
+    'argv' => [],
+    'argc' => 0,
+]
+[10-Oct-2017 14:01:13 UTC] An Error occurred while handling another error:
+exception 'ReflectionException' with message 'Method yii\widgets\BaseListView::yii\widgets\{closure}() does not exist' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php:199
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(199): ReflectionMethod->__construct('yii\\widgets\\Bas...', 'yii\\widgets\\{cl...')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/callStackItem.php(26): yii\web\ErrorHandler->addTypeLinks('yii\\widgets\\Bas...')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(308): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/exception.php(385): yii\web\ErrorHandler->renderCallStackItem(NULL, NULL, 'yii\\widgets\\Bas...', 'yii\\widgets\\{cl...', Array, 13)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(114): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#11 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\base\UnknownPropertyException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\base\UnknownPropertyException))
+#13 {main}
+Previous exception:
+exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\User::regid' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Component.php:147
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/db/BaseActiveRecord.php(286): yii\base\Component->__get('regid')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/helpers/BaseArrayHelper.php(209): yii\db\BaseActiveRecord->__get('regid')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(216): yii\helpers\BaseArrayHelper::getValue(Object(app\models\User), 'regid')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(227): yii\grid\DataColumn->getDataCellValue(Object(app\models\User), 2, 0)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/Column.php(110): yii\grid\DataColumn->renderDataCellContent(Object(app\models\User), 2, 0)
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(507): yii\grid\Column->renderDataCell(Object(app\models\User), 2, 0)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(476): yii\grid\GridView->renderTableRow(Object(app\models\User), 2, 0)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(347): yii\grid\GridView->renderTableBody()
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(155): yii\grid\GridView->renderItems()
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(316): yii\widgets\BaseListView->renderSection('{items}')
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(130): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(133): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#13 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(291): yii\widgets\BaseListView->run()
+#14 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Widget.php(139): yii\grid\GridView->run()
+#15 /home/eb01com/public_html/millionsinger/views/user/index.php(104): yii\base\Widget::widget(Array)
+#16 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#17 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#18 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(152): yii\base\View->renderFile('/home/eb01com/p...', Array, Object(app\controllers\UserController))
+#19 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(381): yii\base\View->render('index', Array, Object(app\controllers\UserController))
+#20 /home/eb01com/public_html/millionsinger/controllers/UserController.php(62): yii\base\Controller->render('index', Array)
+#21 [internal function]: app\controllers\UserController->actionIndex()
+#22 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#23 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#24 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('index', Array)
+#25 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('user/index', Array)
+#26 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 /home/eb01com/public_html/millionsinger/web/index.php(12): yii\base\Application->run()
+#28 {main}
+$_SERVER = [
+    'TZ' => 'Etc/GMT',
+    'REDIRECT_REDIRECT_UNIQUE_ID' => 'WdzSqelq6ES8NbcPNIoOOAAAAAo',
+    'REDIRECT_REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_STATUS' => '200',
+    'REDIRECT_UNIQUE_ID' => 'WdzSqelq6ES8NbcPNIoOOAAAAAo',
+    'REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_HANDLER' => 'application/x-httpd-ea-php56',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'WdzSqelq6ES8NbcPNIoOOAAAAAo',
+    'SCRIPT_URL' => '/millionsinger/web/user/index',
+    'SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'HTTP_HOST' => 'eb01.com.hk',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.0; rv:52.0) Gecko/20100101 Firefox/52.0',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_COOKIE' => 'adminer_version=4.3.1; _csrf=992c1987e5fcd59bba190ca74b4acc0727ad686f2e394cfd5d3e91061585ae64a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22MgV2GZ-AGL9OyhitEPL7FxFozosuzo7G%22%3B%7D; PHPSESSID=8ph0cbe3r4uos0p35ln2l5otp1',
+    'HTTP_CONNECTION' => 'keep-alive',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'PATH' => '/usr/local/jdk/bin:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin:/usr/local/bin:/usr/X11R6/bin:/root/bin:/opt/bin',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'eb01.com.hk',
+    'SERVER_ADDR' => '137.59.149.120',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '103.80.61.11',
+    'DOCUMENT_ROOT' => '/home/eb01com/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '/cgi-sys',
+    'CONTEXT_DOCUMENT_ROOT' => '/usr/local/cpanel/cgi-sys/',
+    'SERVER_ADMIN' => 'webmaster@eb01.com.hk',
+    'SCRIPT_FILENAME' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'REMOTE_PORT' => '55302',
+    'REDIRECT_URL' => '/millionsinger/web/index.php',
+    'GATEWAY_INTERFACE' => 'CGI/1.1',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/millionsinger/web/user/index',
+    'SCRIPT_NAME' => '/millionsinger/web/index.php',
+    'ORIG_SCRIPT_FILENAME' => '/usr/local/cpanel/cgi-sys/ea-php56',
+    'ORIG_PATH_INFO' => '/millionsinger/web/index.php',
+    'ORIG_PATH_TRANSLATED' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'ORIG_SCRIPT_NAME' => '/cgi-sys/ea-php56',
+    'PHP_SELF' => '/millionsinger/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1507644073.237452030181884765625,
+    'REQUEST_TIME' => 1507644073,
+    'argv' => [],
+    'argc' => 0,
+]
+[10-Oct-2017 14:01:17 UTC] An Error occurred while handling another error:
+exception 'ReflectionException' with message 'Method yii\widgets\BaseListView::yii\widgets\{closure}() does not exist' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php:199
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(199): ReflectionMethod->__construct('yii\\widgets\\Bas...', 'yii\\widgets\\{cl...')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/callStackItem.php(26): yii\web\ErrorHandler->addTypeLinks('yii\\widgets\\Bas...')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(308): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/exception.php(385): yii\web\ErrorHandler->renderCallStackItem(NULL, NULL, 'yii\\widgets\\Bas...', 'yii\\widgets\\{cl...', Array, 13)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(114): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#11 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\base\UnknownPropertyException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\base\UnknownPropertyException))
+#13 {main}
+Previous exception:
+exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\User::regid' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Component.php:147
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/db/BaseActiveRecord.php(286): yii\base\Component->__get('regid')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/helpers/BaseArrayHelper.php(209): yii\db\BaseActiveRecord->__get('regid')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(216): yii\helpers\BaseArrayHelper::getValue(Object(app\models\User), 'regid')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(227): yii\grid\DataColumn->getDataCellValue(Object(app\models\User), 2, 0)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/Column.php(110): yii\grid\DataColumn->renderDataCellContent(Object(app\models\User), 2, 0)
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(507): yii\grid\Column->renderDataCell(Object(app\models\User), 2, 0)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(476): yii\grid\GridView->renderTableRow(Object(app\models\User), 2, 0)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(347): yii\grid\GridView->renderTableBody()
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(155): yii\grid\GridView->renderItems()
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(316): yii\widgets\BaseListView->renderSection('{items}')
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(130): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(133): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#13 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(291): yii\widgets\BaseListView->run()
+#14 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Widget.php(139): yii\grid\GridView->run()
+#15 /home/eb01com/public_html/millionsinger/views/user/index.php(104): yii\base\Widget::widget(Array)
+#16 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#17 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#18 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(152): yii\base\View->renderFile('/home/eb01com/p...', Array, Object(app\controllers\UserController))
+#19 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(381): yii\base\View->render('index', Array, Object(app\controllers\UserController))
+#20 /home/eb01com/public_html/millionsinger/controllers/UserController.php(62): yii\base\Controller->render('index', Array)
+#21 [internal function]: app\controllers\UserController->actionIndex()
+#22 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#23 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#24 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('index', Array)
+#25 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('user/index', Array)
+#26 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 /home/eb01com/public_html/millionsinger/web/index.php(12): yii\base\Application->run()
+#28 {main}
+$_SERVER = [
+    'TZ' => 'Etc/GMT',
+    'REDIRECT_REDIRECT_UNIQUE_ID' => 'WdzSrTkD52pruSh8zepa7QAAAAI',
+    'REDIRECT_REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_STATUS' => '200',
+    'REDIRECT_UNIQUE_ID' => 'WdzSrTkD52pruSh8zepa7QAAAAI',
+    'REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_HANDLER' => 'application/x-httpd-ea-php56',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'WdzSrTkD52pruSh8zepa7QAAAAI',
+    'SCRIPT_URL' => '/millionsinger/web/user/index',
+    'SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'HTTP_HOST' => 'eb01.com.hk',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.0; rv:52.0) Gecko/20100101 Firefox/52.0',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_COOKIE' => 'adminer_version=4.3.1; _csrf=992c1987e5fcd59bba190ca74b4acc0727ad686f2e394cfd5d3e91061585ae64a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22MgV2GZ-AGL9OyhitEPL7FxFozosuzo7G%22%3B%7D; PHPSESSID=8ph0cbe3r4uos0p35ln2l5otp1',
+    'HTTP_CONNECTION' => 'keep-alive',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'PATH' => '/usr/local/jdk/bin:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin:/usr/local/bin:/usr/X11R6/bin:/root/bin:/opt/bin',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'eb01.com.hk',
+    'SERVER_ADDR' => '137.59.149.120',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '103.80.61.11',
+    'DOCUMENT_ROOT' => '/home/eb01com/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '/cgi-sys',
+    'CONTEXT_DOCUMENT_ROOT' => '/usr/local/cpanel/cgi-sys/',
+    'SERVER_ADMIN' => 'webmaster@eb01.com.hk',
+    'SCRIPT_FILENAME' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'REMOTE_PORT' => '55303',
+    'REDIRECT_URL' => '/millionsinger/web/index.php',
+    'GATEWAY_INTERFACE' => 'CGI/1.1',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/millionsinger/web/user/index',
+    'SCRIPT_NAME' => '/millionsinger/web/index.php',
+    'ORIG_SCRIPT_FILENAME' => '/usr/local/cpanel/cgi-sys/ea-php56',
+    'ORIG_PATH_INFO' => '/millionsinger/web/index.php',
+    'ORIG_PATH_TRANSLATED' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'ORIG_SCRIPT_NAME' => '/cgi-sys/ea-php56',
+    'PHP_SELF' => '/millionsinger/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1507644077.7317841053009033203125,
+    'REQUEST_TIME' => 1507644077,
+    'argv' => [],
+    'argc' => 0,
+]
+[10-Oct-2017 14:23:26 UTC] An Error occurred while handling another error:
+exception 'ReflectionException' with message 'Method yii\widgets\BaseListView::yii\widgets\{closure}() does not exist' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php:199
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(199): ReflectionMethod->__construct('yii\\widgets\\Bas...', 'yii\\widgets\\{cl...')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/callStackItem.php(26): yii\web\ErrorHandler->addTypeLinks('yii\\widgets\\Bas...')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(308): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/exception.php(385): yii\web\ErrorHandler->renderCallStackItem(NULL, NULL, 'yii\\widgets\\Bas...', 'yii\\widgets\\{cl...', Array, 13)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(114): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#11 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\base\UnknownPropertyException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\base\UnknownPropertyException))
+#13 {main}
+Previous exception:
+exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\User::regid' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Component.php:147
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/db/BaseActiveRecord.php(286): yii\base\Component->__get('regid')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/helpers/BaseArrayHelper.php(209): yii\db\BaseActiveRecord->__get('regid')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(216): yii\helpers\BaseArrayHelper::getValue(Object(app\models\User), 'regid')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(227): yii\grid\DataColumn->getDataCellValue(Object(app\models\User), 2, 0)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/Column.php(110): yii\grid\DataColumn->renderDataCellContent(Object(app\models\User), 2, 0)
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(507): yii\grid\Column->renderDataCell(Object(app\models\User), 2, 0)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(476): yii\grid\GridView->renderTableRow(Object(app\models\User), 2, 0)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(347): yii\grid\GridView->renderTableBody()
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(155): yii\grid\GridView->renderItems()
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(316): yii\widgets\BaseListView->renderSection('{items}')
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(130): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(133): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#13 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(291): yii\widgets\BaseListView->run()
+#14 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Widget.php(139): yii\grid\GridView->run()
+#15 /home/eb01com/public_html/millionsinger/views/user/index.php(104): yii\base\Widget::widget(Array)
+#16 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#17 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#18 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(152): yii\base\View->renderFile('/home/eb01com/p...', Array, Object(app\controllers\UserController))
+#19 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(381): yii\base\View->render('index', Array, Object(app\controllers\UserController))
+#20 /home/eb01com/public_html/millionsinger/controllers/UserController.php(62): yii\base\Controller->render('index', Array)
+#21 [internal function]: app\controllers\UserController->actionIndex()
+#22 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#23 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#24 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('index', Array)
+#25 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('user/index', Array)
+#26 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 /home/eb01com/public_html/millionsinger/web/index.php(12): yii\base\Application->run()
+#28 {main}
+$_SERVER = [
+    'TZ' => 'Etc/GMT',
+    'REDIRECT_REDIRECT_UNIQUE_ID' => 'WdzX3vhTUBKQvAxkxPPT-gAAAAY',
+    'REDIRECT_REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_STATUS' => '200',
+    'REDIRECT_UNIQUE_ID' => 'WdzX3vhTUBKQvAxkxPPT-gAAAAY',
+    'REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_HANDLER' => 'application/x-httpd-ea-php56',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'WdzX3vhTUBKQvAxkxPPT-gAAAAY',
+    'SCRIPT_URL' => '/millionsinger/web/user/index',
+    'SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'HTTP_HOST' => 'eb01.com.hk',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.0; rv:52.0) Gecko/20100101 Firefox/52.0',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_COOKIE' => 'adminer_version=4.3.1; _csrf=992c1987e5fcd59bba190ca74b4acc0727ad686f2e394cfd5d3e91061585ae64a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22MgV2GZ-AGL9OyhitEPL7FxFozosuzo7G%22%3B%7D; PHPSESSID=8ph0cbe3r4uos0p35ln2l5otp1',
+    'HTTP_CONNECTION' => 'keep-alive',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'PATH' => '/usr/local/jdk/bin:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin:/usr/local/bin:/usr/X11R6/bin:/root/bin:/opt/bin',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'eb01.com.hk',
+    'SERVER_ADDR' => '137.59.149.120',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '103.80.61.11',
+    'DOCUMENT_ROOT' => '/home/eb01com/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '/cgi-sys',
+    'CONTEXT_DOCUMENT_ROOT' => '/usr/local/cpanel/cgi-sys/',
+    'SERVER_ADMIN' => 'webmaster@eb01.com.hk',
+    'SCRIPT_FILENAME' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'REMOTE_PORT' => '55617',
+    'REDIRECT_URL' => '/millionsinger/web/index.php',
+    'GATEWAY_INTERFACE' => 'CGI/1.1',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/millionsinger/web/user/index',
+    'SCRIPT_NAME' => '/millionsinger/web/index.php',
+    'ORIG_SCRIPT_FILENAME' => '/usr/local/cpanel/cgi-sys/ea-php56',
+    'ORIG_PATH_INFO' => '/millionsinger/web/index.php',
+    'ORIG_PATH_TRANSLATED' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'ORIG_SCRIPT_NAME' => '/cgi-sys/ea-php56',
+    'PHP_SELF' => '/millionsinger/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1507645406.7199800014495849609375,
+    'REQUEST_TIME' => 1507645406,
+    'argv' => [],
+    'argc' => 0,
+]
+[10-Oct-2017 14:23:28 UTC] An Error occurred while handling another error:
+exception 'ReflectionException' with message 'Method yii\widgets\BaseListView::yii\widgets\{closure}() does not exist' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php:199
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(199): ReflectionMethod->__construct('yii\\widgets\\Bas...', 'yii\\widgets\\{cl...')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/callStackItem.php(26): yii\web\ErrorHandler->addTypeLinks('yii\\widgets\\Bas...')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(308): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/exception.php(385): yii\web\ErrorHandler->renderCallStackItem(NULL, NULL, 'yii\\widgets\\Bas...', 'yii\\widgets\\{cl...', Array, 13)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(114): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#11 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\base\UnknownPropertyException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\base\UnknownPropertyException))
+#13 {main}
+Previous exception:
+exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\User::regid' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Component.php:147
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/db/BaseActiveRecord.php(286): yii\base\Component->__get('regid')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/helpers/BaseArrayHelper.php(209): yii\db\BaseActiveRecord->__get('regid')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(216): yii\helpers\BaseArrayHelper::getValue(Object(app\models\User), 'regid')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(227): yii\grid\DataColumn->getDataCellValue(Object(app\models\User), 2, 0)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/Column.php(110): yii\grid\DataColumn->renderDataCellContent(Object(app\models\User), 2, 0)
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(507): yii\grid\Column->renderDataCell(Object(app\models\User), 2, 0)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(476): yii\grid\GridView->renderTableRow(Object(app\models\User), 2, 0)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(347): yii\grid\GridView->renderTableBody()
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(155): yii\grid\GridView->renderItems()
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(316): yii\widgets\BaseListView->renderSection('{items}')
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(130): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(133): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#13 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(291): yii\widgets\BaseListView->run()
+#14 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Widget.php(139): yii\grid\GridView->run()
+#15 /home/eb01com/public_html/millionsinger/views/user/index.php(104): yii\base\Widget::widget(Array)
+#16 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#17 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#18 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(152): yii\base\View->renderFile('/home/eb01com/p...', Array, Object(app\controllers\UserController))
+#19 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(381): yii\base\View->render('index', Array, Object(app\controllers\UserController))
+#20 /home/eb01com/public_html/millionsinger/controllers/UserController.php(62): yii\base\Controller->render('index', Array)
+#21 [internal function]: app\controllers\UserController->actionIndex()
+#22 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#23 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#24 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('index', Array)
+#25 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('user/index', Array)
+#26 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 /home/eb01com/public_html/millionsinger/web/index.php(12): yii\base\Application->run()
+#28 {main}
+$_SERVER = [
+    'TZ' => 'Etc/GMT',
+    'REDIRECT_REDIRECT_UNIQUE_ID' => 'WdzX4NLVebjlY8zUdChQXAAAAAI',
+    'REDIRECT_REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_STATUS' => '200',
+    'REDIRECT_UNIQUE_ID' => 'WdzX4NLVebjlY8zUdChQXAAAAAI',
+    'REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_HANDLER' => 'application/x-httpd-ea-php56',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'WdzX4NLVebjlY8zUdChQXAAAAAI',
+    'SCRIPT_URL' => '/millionsinger/web/user/index',
+    'SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'HTTP_CONNECTION' => 'Close',
+    'HTTP_PROXY_CONNECTION' => 'Close',
+    'HTTP_ACCEPT' => '*/*',
+    'HTTP_ACCEPT_CHARSET' => 'ISO-8859-1;utf-8;q=0.7,*;q=0.7',
+    'HTTP_REFERER' => '137.59.149.120',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:33.0) Gecko/20100101 Firefox/33.0',
+    'HTTP_HOST' => 'eb01.com.hk',
+    'PATH' => '/usr/local/jdk/bin:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin:/usr/local/bin:/usr/X11R6/bin:/root/bin:/opt/bin',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'eb01.com.hk',
+    'SERVER_ADDR' => '137.59.149.120',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '139.59.42.246',
+    'DOCUMENT_ROOT' => '/home/eb01com/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '/cgi-sys',
+    'CONTEXT_DOCUMENT_ROOT' => '/usr/local/cpanel/cgi-sys/',
+    'SERVER_ADMIN' => 'webmaster@eb01.com.hk',
+    'SCRIPT_FILENAME' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'REMOTE_PORT' => '40026',
+    'REDIRECT_URL' => '/millionsinger/web/index.php',
+    'GATEWAY_INTERFACE' => 'CGI/1.1',
+    'SERVER_PROTOCOL' => 'HTTP/1.0',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/millionsinger/web/user/index',
+    'SCRIPT_NAME' => '/millionsinger/web/index.php',
+    'ORIG_SCRIPT_FILENAME' => '/usr/local/cpanel/cgi-sys/ea-php56',
+    'ORIG_PATH_INFO' => '/millionsinger/web/index.php',
+    'ORIG_PATH_TRANSLATED' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'ORIG_SCRIPT_NAME' => '/cgi-sys/ea-php56',
+    'PHP_SELF' => '/millionsinger/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1507645408.3422811031341552734375,
+    'REQUEST_TIME' => 1507645408,
+    'argv' => [],
+    'argc' => 0,
+]
+[10-Oct-2017 14:24:50 UTC] An Error occurred while handling another error:
+exception 'ReflectionException' with message 'Method yii\widgets\BaseListView::yii\widgets\{closure}() does not exist' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php:199
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(199): ReflectionMethod->__construct('yii\\widgets\\Bas...', 'yii\\widgets\\{cl...')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/callStackItem.php(26): yii\web\ErrorHandler->addTypeLinks('yii\\widgets\\Bas...')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(308): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/exception.php(385): yii\web\ErrorHandler->renderCallStackItem(NULL, NULL, 'yii\\widgets\\Bas...', 'yii\\widgets\\{cl...', Array, 13)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(114): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#11 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\base\UnknownPropertyException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\base\UnknownPropertyException))
+#13 {main}
+Previous exception:
+exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\User::regid' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Component.php:147
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/db/BaseActiveRecord.php(286): yii\base\Component->__get('regid')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/helpers/BaseArrayHelper.php(209): yii\db\BaseActiveRecord->__get('regid')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(216): yii\helpers\BaseArrayHelper::getValue(Object(app\models\User), 'regid')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(227): yii\grid\DataColumn->getDataCellValue(Object(app\models\User), 2, 0)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/Column.php(110): yii\grid\DataColumn->renderDataCellContent(Object(app\models\User), 2, 0)
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(507): yii\grid\Column->renderDataCell(Object(app\models\User), 2, 0)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(476): yii\grid\GridView->renderTableRow(Object(app\models\User), 2, 0)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(347): yii\grid\GridView->renderTableBody()
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(155): yii\grid\GridView->renderItems()
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(316): yii\widgets\BaseListView->renderSection('{items}')
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(130): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(133): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#13 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(291): yii\widgets\BaseListView->run()
+#14 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Widget.php(139): yii\grid\GridView->run()
+#15 /home/eb01com/public_html/millionsinger/views/user/index.php(104): yii\base\Widget::widget(Array)
+#16 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#17 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#18 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(152): yii\base\View->renderFile('/home/eb01com/p...', Array, Object(app\controllers\UserController))
+#19 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(381): yii\base\View->render('index', Array, Object(app\controllers\UserController))
+#20 /home/eb01com/public_html/millionsinger/controllers/UserController.php(62): yii\base\Controller->render('index', Array)
+#21 [internal function]: app\controllers\UserController->actionIndex()
+#22 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#23 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#24 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('index', Array)
+#25 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('user/index', Array)
+#26 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 /home/eb01com/public_html/millionsinger/web/index.php(12): yii\base\Application->run()
+#28 {main}
+$_SERVER = [
+    'TZ' => 'Etc/GMT',
+    'REDIRECT_REDIRECT_UNIQUE_ID' => 'WdzYMsYpCB5Spsa1pQPE@AAAAA0',
+    'REDIRECT_REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_STATUS' => '200',
+    'REDIRECT_UNIQUE_ID' => 'WdzYMsYpCB5Spsa1pQPE@AAAAA0',
+    'REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_HANDLER' => 'application/x-httpd-ea-php56',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'WdzYMsYpCB5Spsa1pQPE@AAAAA0',
+    'SCRIPT_URL' => '/millionsinger/web/user/index',
+    'SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'HTTP_HOST' => 'eb01.com.hk',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.0; rv:52.0) Gecko/20100101 Firefox/52.0',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_COOKIE' => 'adminer_version=4.3.1; _csrf=992c1987e5fcd59bba190ca74b4acc0727ad686f2e394cfd5d3e91061585ae64a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22MgV2GZ-AGL9OyhitEPL7FxFozosuzo7G%22%3B%7D; PHPSESSID=8ph0cbe3r4uos0p35ln2l5otp1',
+    'HTTP_CONNECTION' => 'keep-alive',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'PATH' => '/usr/local/jdk/bin:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin:/usr/local/bin:/usr/X11R6/bin:/root/bin:/opt/bin',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'eb01.com.hk',
+    'SERVER_ADDR' => '137.59.149.120',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '103.80.61.11',
+    'DOCUMENT_ROOT' => '/home/eb01com/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '/cgi-sys',
+    'CONTEXT_DOCUMENT_ROOT' => '/usr/local/cpanel/cgi-sys/',
+    'SERVER_ADMIN' => 'webmaster@eb01.com.hk',
+    'SCRIPT_FILENAME' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'REMOTE_PORT' => '55636',
+    'REDIRECT_URL' => '/millionsinger/web/index.php',
+    'GATEWAY_INTERFACE' => 'CGI/1.1',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/millionsinger/web/user/index',
+    'SCRIPT_NAME' => '/millionsinger/web/index.php',
+    'ORIG_SCRIPT_FILENAME' => '/usr/local/cpanel/cgi-sys/ea-php56',
+    'ORIG_PATH_INFO' => '/millionsinger/web/index.php',
+    'ORIG_PATH_TRANSLATED' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'ORIG_SCRIPT_NAME' => '/cgi-sys/ea-php56',
+    'PHP_SELF' => '/millionsinger/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1507645490.4266779422760009765625,
+    'REQUEST_TIME' => 1507645490,
+    'argv' => [],
+    'argc' => 0,
+]
+[10-Oct-2017 14:24:52 UTC] An Error occurred while handling another error:
+exception 'ReflectionException' with message 'Method yii\widgets\BaseListView::yii\widgets\{closure}() does not exist' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php:199
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(199): ReflectionMethod->__construct('yii\\widgets\\Bas...', 'yii\\widgets\\{cl...')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/callStackItem.php(26): yii\web\ErrorHandler->addTypeLinks('yii\\widgets\\Bas...')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(308): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/exception.php(385): yii\web\ErrorHandler->renderCallStackItem(NULL, NULL, 'yii\\widgets\\Bas...', 'yii\\widgets\\{cl...', Array, 13)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(114): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#11 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\base\UnknownPropertyException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\base\UnknownPropertyException))
+#13 {main}
+Previous exception:
+exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\User::regid' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Component.php:147
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/db/BaseActiveRecord.php(286): yii\base\Component->__get('regid')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/helpers/BaseArrayHelper.php(209): yii\db\BaseActiveRecord->__get('regid')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(216): yii\helpers\BaseArrayHelper::getValue(Object(app\models\User), 'regid')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(227): yii\grid\DataColumn->getDataCellValue(Object(app\models\User), 2, 0)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/Column.php(110): yii\grid\DataColumn->renderDataCellContent(Object(app\models\User), 2, 0)
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(507): yii\grid\Column->renderDataCell(Object(app\models\User), 2, 0)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(476): yii\grid\GridView->renderTableRow(Object(app\models\User), 2, 0)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(347): yii\grid\GridView->renderTableBody()
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(155): yii\grid\GridView->renderItems()
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(316): yii\widgets\BaseListView->renderSection('{items}')
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(130): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(133): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#13 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(291): yii\widgets\BaseListView->run()
+#14 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Widget.php(139): yii\grid\GridView->run()
+#15 /home/eb01com/public_html/millionsinger/views/user/index.php(104): yii\base\Widget::widget(Array)
+#16 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#17 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#18 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(152): yii\base\View->renderFile('/home/eb01com/p...', Array, Object(app\controllers\UserController))
+#19 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(381): yii\base\View->render('index', Array, Object(app\controllers\UserController))
+#20 /home/eb01com/public_html/millionsinger/controllers/UserController.php(62): yii\base\Controller->render('index', Array)
+#21 [internal function]: app\controllers\UserController->actionIndex()
+#22 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#23 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#24 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('index', Array)
+#25 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('user/index', Array)
+#26 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 /home/eb01com/public_html/millionsinger/web/index.php(12): yii\base\Application->run()
+#28 {main}
+$_SERVER = [
+    'TZ' => 'Etc/GMT',
+    'REDIRECT_REDIRECT_UNIQUE_ID' => 'WdzYNLS5Zu4XZIjZSkA48wAAACc',
+    'REDIRECT_REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_STATUS' => '200',
+    'REDIRECT_UNIQUE_ID' => 'WdzYNLS5Zu4XZIjZSkA48wAAACc',
+    'REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_HANDLER' => 'application/x-httpd-ea-php56',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'WdzYNLS5Zu4XZIjZSkA48wAAACc',
+    'SCRIPT_URL' => '/millionsinger/web/user/index',
+    'SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'HTTP_HOST' => 'eb01.com.hk',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.0; rv:52.0) Gecko/20100101 Firefox/52.0',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_COOKIE' => 'adminer_version=4.3.1; _csrf=992c1987e5fcd59bba190ca74b4acc0727ad686f2e394cfd5d3e91061585ae64a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22MgV2GZ-AGL9OyhitEPL7FxFozosuzo7G%22%3B%7D; PHPSESSID=8ph0cbe3r4uos0p35ln2l5otp1',
+    'HTTP_CONNECTION' => 'keep-alive',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'PATH' => '/usr/local/jdk/bin:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin:/usr/local/bin:/usr/X11R6/bin:/root/bin:/opt/bin',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'eb01.com.hk',
+    'SERVER_ADDR' => '137.59.149.120',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '103.80.61.11',
+    'DOCUMENT_ROOT' => '/home/eb01com/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '/cgi-sys',
+    'CONTEXT_DOCUMENT_ROOT' => '/usr/local/cpanel/cgi-sys/',
+    'SERVER_ADMIN' => 'webmaster@eb01.com.hk',
+    'SCRIPT_FILENAME' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'REMOTE_PORT' => '55637',
+    'REDIRECT_URL' => '/millionsinger/web/index.php',
+    'GATEWAY_INTERFACE' => 'CGI/1.1',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/millionsinger/web/user/index',
+    'SCRIPT_NAME' => '/millionsinger/web/index.php',
+    'ORIG_SCRIPT_FILENAME' => '/usr/local/cpanel/cgi-sys/ea-php56',
+    'ORIG_PATH_INFO' => '/millionsinger/web/index.php',
+    'ORIG_PATH_TRANSLATED' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'ORIG_SCRIPT_NAME' => '/cgi-sys/ea-php56',
+    'PHP_SELF' => '/millionsinger/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1507645492.8591029644012451171875,
+    'REQUEST_TIME' => 1507645492,
+    'argv' => [],
+    'argc' => 0,
+]
+[10-Oct-2017 14:26:07 UTC] An Error occurred while handling another error:
+exception 'ReflectionException' with message 'Method yii\widgets\BaseListView::yii\widgets\{closure}() does not exist' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php:199
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(199): ReflectionMethod->__construct('yii\\widgets\\Bas...', 'yii\\widgets\\{cl...')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/callStackItem.php(26): yii\web\ErrorHandler->addTypeLinks('yii\\widgets\\Bas...')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(308): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/exception.php(385): yii\web\ErrorHandler->renderCallStackItem(NULL, NULL, 'yii\\widgets\\Bas...', 'yii\\widgets\\{cl...', Array, 13)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(114): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#11 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\base\UnknownPropertyException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\base\UnknownPropertyException))
+#13 {main}
+Previous exception:
+exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\User::regid' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Component.php:147
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/db/BaseActiveRecord.php(286): yii\base\Component->__get('regid')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/helpers/BaseArrayHelper.php(209): yii\db\BaseActiveRecord->__get('regid')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(216): yii\helpers\BaseArrayHelper::getValue(Object(app\models\User), 'regid')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(227): yii\grid\DataColumn->getDataCellValue(Object(app\models\User), 2, 0)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/Column.php(110): yii\grid\DataColumn->renderDataCellContent(Object(app\models\User), 2, 0)
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(507): yii\grid\Column->renderDataCell(Object(app\models\User), 2, 0)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(476): yii\grid\GridView->renderTableRow(Object(app\models\User), 2, 0)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(347): yii\grid\GridView->renderTableBody()
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(155): yii\grid\GridView->renderItems()
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(316): yii\widgets\BaseListView->renderSection('{items}')
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(130): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(133): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#13 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(291): yii\widgets\BaseListView->run()
+#14 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Widget.php(139): yii\grid\GridView->run()
+#15 /home/eb01com/public_html/millionsinger/views/user/index.php(104): yii\base\Widget::widget(Array)
+#16 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#17 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#18 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(152): yii\base\View->renderFile('/home/eb01com/p...', Array, Object(app\controllers\UserController))
+#19 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(381): yii\base\View->render('index', Array, Object(app\controllers\UserController))
+#20 /home/eb01com/public_html/millionsinger/controllers/UserController.php(62): yii\base\Controller->render('index', Array)
+#21 [internal function]: app\controllers\UserController->actionIndex()
+#22 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#23 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#24 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('index', Array)
+#25 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('user/index', Array)
+#26 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 /home/eb01com/public_html/millionsinger/web/index.php(12): yii\base\Application->run()
+#28 {main}
+$_SERVER = [
+    'TZ' => 'Etc/GMT',
+    'REDIRECT_REDIRECT_UNIQUE_ID' => 'WdzYfxsDlCyrYt6wAOemPQAAAAM',
+    'REDIRECT_REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_STATUS' => '200',
+    'REDIRECT_UNIQUE_ID' => 'WdzYfxsDlCyrYt6wAOemPQAAAAM',
+    'REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_HANDLER' => 'application/x-httpd-ea-php56',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'WdzYfxsDlCyrYt6wAOemPQAAAAM',
+    'SCRIPT_URL' => '/millionsinger/web/user/index',
+    'SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'HTTP_HOST' => 'eb01.com.hk',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.0; rv:52.0) Gecko/20100101 Firefox/52.0',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_REFERER' => 'http://eb01.com.hk/millionsinger/web/user/dashboard',
+    'HTTP_COOKIE' => 'adminer_version=4.3.1; _csrf=992c1987e5fcd59bba190ca74b4acc0727ad686f2e394cfd5d3e91061585ae64a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22MgV2GZ-AGL9OyhitEPL7FxFozosuzo7G%22%3B%7D; PHPSESSID=8ph0cbe3r4uos0p35ln2l5otp1',
+    'HTTP_CONNECTION' => 'keep-alive',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'PATH' => '/usr/local/jdk/bin:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin:/usr/local/bin:/usr/X11R6/bin:/root/bin:/opt/bin',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'eb01.com.hk',
+    'SERVER_ADDR' => '137.59.149.120',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '103.80.61.11',
+    'DOCUMENT_ROOT' => '/home/eb01com/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '/cgi-sys',
+    'CONTEXT_DOCUMENT_ROOT' => '/usr/local/cpanel/cgi-sys/',
+    'SERVER_ADMIN' => 'webmaster@eb01.com.hk',
+    'SCRIPT_FILENAME' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'REMOTE_PORT' => '55648',
+    'REDIRECT_URL' => '/millionsinger/web/index.php',
+    'GATEWAY_INTERFACE' => 'CGI/1.1',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/millionsinger/web/user/index',
+    'SCRIPT_NAME' => '/millionsinger/web/index.php',
+    'ORIG_SCRIPT_FILENAME' => '/usr/local/cpanel/cgi-sys/ea-php56',
+    'ORIG_PATH_INFO' => '/millionsinger/web/index.php',
+    'ORIG_PATH_TRANSLATED' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'ORIG_SCRIPT_NAME' => '/cgi-sys/ea-php56',
+    'PHP_SELF' => '/millionsinger/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1507645567.33574390411376953125,
+    'REQUEST_TIME' => 1507645567,
+    'argv' => [],
+    'argc' => 0,
+]
+[10-Oct-2017 15:05:15 UTC] An Error occurred while handling another error:
+exception 'ReflectionException' with message 'Method yii\widgets\BaseListView::yii\widgets\{closure}() does not exist' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php:199
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(199): ReflectionMethod->__construct('yii\\widgets\\Bas...', 'yii\\widgets\\{cl...')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/callStackItem.php(26): yii\web\ErrorHandler->addTypeLinks('yii\\widgets\\Bas...')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(308): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/views/errorHandler/exception.php(385): yii\web\ErrorHandler->renderCallStackItem(NULL, NULL, 'yii\\widgets\\Bas...', 'yii\\widgets\\{cl...', Array, 13)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(253): yii\base\View->renderFile('@yii/views/erro...', Array, Object(yii\web\ErrorHandler))
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/ErrorHandler.php(114): yii\web\ErrorHandler->renderFile('@yii/views/erro...', Array)
+#11 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\base\UnknownPropertyException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\base\UnknownPropertyException))
+#13 {main}
+Previous exception:
+exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\User::username' in /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Component.php:147
+Stack trace:
+#0 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/db/BaseActiveRecord.php(286): yii\base\Component->__get('username')
+#1 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/helpers/BaseArrayHelper.php(209): yii\db\BaseActiveRecord->__get('username')
+#2 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(211): yii\helpers\BaseArrayHelper::getValue(Object(app\models\User), 'username')
+#3 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/DataColumn.php(227): yii\grid\DataColumn->getDataCellValue(Object(app\models\User), 2, 0)
+#4 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/Column.php(110): yii\grid\DataColumn->renderDataCellContent(Object(app\models\User), 2, 0)
+#5 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(507): yii\grid\Column->renderDataCell(Object(app\models\User), 2, 0)
+#6 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(476): yii\grid\GridView->renderTableRow(Object(app\models\User), 2, 0)
+#7 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(347): yii\grid\GridView->renderTableBody()
+#8 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(155): yii\grid\GridView->renderItems()
+#9 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(316): yii\widgets\BaseListView->renderSection('{items}')
+#10 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(130): yii\grid\GridView->renderSection('{items}')
+#11 [internal function]: yii\widgets\BaseListView->yii\widgets\{closure}(Array)
+#12 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/widgets/BaseListView.php(133): preg_replace_callback('/{\\w+}/', Object(Closure), '{summary}\n{item...')
+#13 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/grid/GridView.php(291): yii\widgets\BaseListView->run()
+#14 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Widget.php(139): yii\grid\GridView->run()
+#15 /home/eb01com/public_html/millionsinger/views/user/index.php(104): yii\base\Widget::widget(Array)
+#16 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(328): require('/home/eb01com/p...')
+#17 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(250): yii\base\View->renderPhpFile('/home/eb01com/p...', Array)
+#18 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/View.php(152): yii\base\View->renderFile('/home/eb01com/p...', Array, Object(app\controllers\UserController))
+#19 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(381): yii\base\View->render('index', Array, Object(app\controllers\UserController))
+#20 /home/eb01com/public_html/millionsinger/controllers/UserController.php(62): yii\base\Controller->render('index', Array)
+#21 [internal function]: app\controllers\UserController->actionIndex()
+#22 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#23 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#24 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('index', Array)
+#25 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('user/index', Array)
+#26 /home/eb01com/public_html/millionsinger/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#27 /home/eb01com/public_html/millionsinger/web/index.php(12): yii\base\Application->run()
+#28 {main}
+$_SERVER = [
+    'TZ' => 'Etc/GMT',
+    'REDIRECT_REDIRECT_UNIQUE_ID' => 'Wdzhq11yc5htKhJGGphj7AAAAAE',
+    'REDIRECT_REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_REDIRECT_STATUS' => '200',
+    'REDIRECT_UNIQUE_ID' => 'Wdzhq11yc5htKhJGGphj7AAAAAE',
+    'REDIRECT_SCRIPT_URL' => '/millionsinger/web/user/index',
+    'REDIRECT_SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'REDIRECT_HANDLER' => 'application/x-httpd-ea-php56',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'Wdzhq11yc5htKhJGGphj7AAAAAE',
+    'SCRIPT_URL' => '/millionsinger/web/user/index',
+    'SCRIPT_URI' => 'http://eb01.com.hk/millionsinger/web/user/index',
+    'HTTP_HOST' => 'eb01.com.hk',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.0; rv:52.0) Gecko/20100101 Firefox/52.0',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_REFERER' => 'http://eb01.com.hk/millionsinger/web/user/dashboard',
+    'HTTP_COOKIE' => 'adminer_version=4.3.1; _csrf=992c1987e5fcd59bba190ca74b4acc0727ad686f2e394cfd5d3e91061585ae64a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22MgV2GZ-AGL9OyhitEPL7FxFozosuzo7G%22%3B%7D; PHPSESSID=j94ppo211j71b0tcfnhug3g5r2',
+    'HTTP_CONNECTION' => 'keep-alive',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'PATH' => '/usr/local/jdk/bin:/usr/kerberos/sbin:/usr/kerberos/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin:/usr/local/bin:/usr/X11R6/bin:/root/bin:/opt/bin',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'eb01.com.hk',
+    'SERVER_ADDR' => '137.59.149.120',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '103.80.61.11',
+    'DOCUMENT_ROOT' => '/home/eb01com/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '/cgi-sys',
+    'CONTEXT_DOCUMENT_ROOT' => '/usr/local/cpanel/cgi-sys/',
+    'SERVER_ADMIN' => 'webmaster@eb01.com.hk',
+    'SCRIPT_FILENAME' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'REMOTE_PORT' => '56518',
+    'REDIRECT_URL' => '/millionsinger/web/index.php',
+    'GATEWAY_INTERFACE' => 'CGI/1.1',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/millionsinger/web/user/index',
+    'SCRIPT_NAME' => '/millionsinger/web/index.php',
+    'ORIG_SCRIPT_FILENAME' => '/usr/local/cpanel/cgi-sys/ea-php56',
+    'ORIG_PATH_INFO' => '/millionsinger/web/index.php',
+    'ORIG_PATH_TRANSLATED' => '/home/eb01com/public_html/millionsinger/web/index.php',
+    'ORIG_SCRIPT_NAME' => '/cgi-sys/ea-php56',
+    'PHP_SELF' => '/millionsinger/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1507647915.251781940460205078125,
+    'REQUEST_TIME' => 1507647915,
+    'argv' => [],
+    'argc' => 0,
+]
+[11-Oct-2017 06:37:29 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/eb01com/public_html/millionsinger/controllers/ApiController.php on line 496
+[11-Oct-2017 07:09:26 UTC] PHP Parse error:  syntax error, unexpected ''typ' (T_ENCAPSED_AND_WHITESPACE), expecting ']' in /home/eb01com/public_html/millionsinger/controllers/ApiController.php on line 4894
+[11-Oct-2017 08:18:04 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/eb01com/public_html/millionsinger/controllers/UserController.php on line 729
+[12-Oct-2017 11:15:43 UTC] PHP Parse error:  syntax error, unexpected ',' in /home/eb01com/public_html/millionsinger/controllers/UserController.php on line 465
+[12-Oct-2017 11:48:52 UTC] PHP Warning:  Unterminated comment starting line 104 in /home/eb01com/public_html/millionsinger/controllers/UserController.php on line 104
+[12-Oct-2017 11:48:52 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/eb01com/public_html/millionsinger/controllers/UserController.php on line 104

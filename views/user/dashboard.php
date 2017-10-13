@@ -127,8 +127,8 @@ $this->title = "Dashboard";
 									<td><?php echo $u++; ?></td>
 									<td><?php echo $uservalue["nick_name"]; ?></td>
 									<td>
-										<?php echo $uservalue["username"]; ?>
-										<small>Mobile: <?php echo $uservalue["mobile_no"]; ?></small>
+										<?php echo $uservalue["name"]; ?>
+										<small>Mobile: <?php echo $uservalue["number"]; ?></small>
 									</td>
 									<td><a target="_blank" href="<?php echo Yii::$app->request->baseUrl."/user/viewincome?id=".$uservalue["id"]; ?>" class="btn btn-xs btn-success" data-toggle="tooltip" data-title="Click to View Detail"><i class="fa fa-eye"></i></a></td>
 								</tr>

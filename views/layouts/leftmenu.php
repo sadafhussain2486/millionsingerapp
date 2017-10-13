@@ -21,12 +21,12 @@
               }
               else
               {
-                $image=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';
+                $image=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/avatar80_3.png';
               }
             }
             else
             {
-              $image=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';            
+              $image=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/avatar80_3.png';            
             }
           }
           ?>

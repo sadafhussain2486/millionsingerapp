@@ -17,8 +17,8 @@ if(Yii::$app->user->isGuest==1)
 
 
   <header class="main-header">
-    <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <!-- Logo -->	
+    <a href="#" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>M</b>App</span>
       <!-- logo for regular state and mobile devices -->
@@ -36,13 +36,13 @@ if(Yii::$app->user->isGuest==1)
           <!-- Messages: style can be found in dropdown.less-->         
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle user_nm" data-toggle="dropdown">
               <?php 
               $image="";
               $nick_name="";
               if(Yii::$app->user->isGuest!=1)
               {
-                $nick_name=Yii::$app->user->identity->nick_name;
+                $nick_name=Yii::$app->user->identity->name;
                 if(Yii::$app->user->identity->image!=null)
                 {
                   if(!file_exists(Yii::$app->user->identity->image))
@@ -51,17 +51,18 @@ if(Yii::$app->user->isGuest==1)
                   }
                   else
                   {
-                    $image=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';
+                    $image=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/avatar80_3.png';
                   }
                 }
                 else
                 {
-                  $image=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';            
+                  $image=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/avatar80_3.png';            
                 }
               }
               ?>
               <img src="<?= $image ?>" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $nick_name ?></span>
+              <span class="hidden-xs usr_nk"><?php echo ucfirst($nick_name); ?></span>
+			  <span class="fa fa-caret-down"></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -95,15 +96,15 @@ if(Yii::$app->user->isGuest==1)
                              // ['class' => 'btn btn-success btn-flat']);                                  
                   ?>
                 </div>-->
-                <div class="" style="margin-left: 14px;">
-                  <?= Html::a('Password',['/user/changepassword'],
-                              ['class' => 'btn btn-success btn-flat','title'=>'Change Password']);                                  
+                <div class="drp_menu">
+                  <?= Html::a('<span class="glyphicon glyphicon-pencil"></span> Change password',['/user/changepassword'],
+                              ['class' => '','title'=>'Change Password']);                                  
                   ?>
                 </div>
-                <div class="">
+                <div class="drp_menu">
                   <!-- <a href="<?php //= Url::to(['site/logout']); ?>" class="btn btn-default btn-flat">Sign out</a> -->
-                  <?= Html::a('Sign out',['/site/logout'],
-                              ['class' => 'btn btn-success btn-flat', 'data-method'=>'post']);                                  
+                  <?= Html::a('<span class="glyphicon glyphicon-log-out"></span> Sign-out',['/site/logout'],
+                              ['class' => '', 'data-method'=>'post']);                                  
                   ?>
                 </div>
               </li>

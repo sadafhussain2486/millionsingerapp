@@ -62,7 +62,7 @@ class ApiController extends Controller
             '402'=>'User id can\'t be empty',
             '403'=>'User not Found.',
             '404'=>'Invalid Otp Code.',
-            '405'=>'Invalid Username.',
+            '405'=>'Phone number can\'t be empty.',
             '406'=>'Invalid Password',
             '407'=>'New Password Not Empty.',
             '408'=>'Current Password Not Empty.',
@@ -81,7 +81,7 @@ class ApiController extends Controller
             '422'=>'Group Admin cannot exit the group.',
             '423'=>'Group Admin cannot delete the group.',
             '424'=>'Enter atleast 3 characters.',
-            '425'=>'Opening Balance is less than Expense Amount.',
+            '425'=>'Parameters passed are invalid',
         );
         if($index!=null){
             return $alertenglish[$index];
@@ -125,6 +125,168 @@ class ApiController extends Controller
      * @return mixed
      */
 
+    
+    ##################################### USER  LOGIN SECTION        #########################################################
+    public function actionUserlogin_reg() {           
+        $response=array();
+        $model = new User();
+        $model2 = new UserSearch();
+        if(Yii::$app->getRequest()->method==="POST"){
+            $data=Yii::$app->request->post();
+//            $language=$data["lang"];
+//            if($language==1)
+//            {
+//                $language=1;                    //Chinese
+//                $returnmessage=$this->alertchinese();                    
+//            }
+//            else
+//            {
+//                $language=0;                    //English
+//                $returnmessage=$this->alertenglish();
+//            }
+            $returnmessage=$this->alertenglish();
+//            $error=$model2->validateLogin($data);
+//            if($error['error'])
+//            {
+//                $response=$error;
+//            }
+//            else
+//            {   
+//            print_r($data);
+            if(isset($data["registration_type"]) && $data["registration_type"] == 1) {
+                if(isset($data["number"]) && !empty($data["number"]) && isset($data["device_type"]) && !empty($data["device_type"]) && isset($data["device_id"]) && !empty($data["device_id"])) {
+                    $sessionkey = Yii::$app->getSecurity()->generateRandomString($length=20); 
+                    $userdata=$model->find()->where(['number' => $data['number'], 'role' => 2])
+                                    ->limit(1)
+                                    ->orderBy(['id'=>SORT_ASC])
+                                    ->one(); 
+                    if(!empty($userdata)) {                                      
+                        $otp = '00000';
+//                            $hashpassword = md5($data["password"]);
+//                            if($userdata["password"]==$hashpassword)
+//                            {
+                        if($userdata["status"]==1)
+                        {
+                            //UPDATE INTO DATABASE
+                            $updatearr=array(
+                                'otp_code' => $otp,
+                                'session_key' => $sessionkey,
+//                                        'register_id'=>$data['register_id'],
+////                                        'device_type'=>$data['device_type'],
+                                'updated_date' => date('Y-m-d g:i:s')
+//                                        'lang' => $language
+                                );
+                            $upd=User::updateAll($updatearr, 'id = '.$userdata['id']); 
+                            $response['error']=false;                        
+                            $response['userid']=$userdata["id"];
+                            $response['session_key']=$sessionkey;
+                            $response['verify_no']=$userdata["verify_no"];
+                            $response['statuscode']=200;
+                            $response['msg']="Success";
+                        }
+                        else
+                        {
+                            $response['error']=true;
+                            $response['statuscode']=415;
+                            $response['msg']=$returnmessage[$response['statuscode']];
+                        }
+                    }
+                    else{
+                        if($data["device_type"] == 1 || $data["device_type"] == 2){  //1=> android 2=> ios
+                             $otpcode="000000"; 
+                        
+                            $data['otp_code']=$otpcode;
+                            $data['created_date']=date('Y-m-d g:i:s');
+                            $data['updated_date']=date('Y-m-d g:i:s');
+//                            $model->device_id = $data["device_type"];
+                            $model->lang=1;
+    //                        $model->scenario = User::SCENARIO_CREATE;
+                            $model->attributes = $data;
+//                            print_r($data);
+//                            print_r($model->attributes); exit;
+                            if ($model->save()) {
+                                $response['error']=false;
+                                $response['userid']=$model->getPrimaryKey();
+                                $response['session_key']=$sessionkey;
+                                $response['statuscode']=200;
+                                $response['msg']="Success";
+                            } 
+                            else {
+                                $response['error']=true;
+                                $response['statuscode']=202;
+                                $response['msg']=$returnmessage[$response["statuscode"]];
+                            }
+                        }
+                        else{
+                            $response['error']=true;
+                            $response['statuscode']=425;
+                            $response['msg']=$returnmessage[$response['statuscode']];
+                        }
+                    } 
+//                    else{
+//                        $response['error']=true;
+//                        $response['statuscode']=425;
+//                        $response['msg']=$returnmessage[$response['statuscode']];
+//                    }
+//                            }
+//                            else
+//                            {
+//                                $response['error']=true;
+//                                $response['statuscode']=406;
+//                                $response['msg']=$returnmessage[$response['statuscode']];
+//                            }
+                        
+                        /*else if($data["register_by"]==2)
+                        {
+                            if($userdata["status"]==1)
+                            {
+                                //UPDATE INTO DATABASE
+                                $updatearr=array(
+                                    'token' => $sessionkey, 
+                                    'facebook_id' => $data["facebook_id"], 
+                                    'device_type'=>$data['device_type'],                  
+                                    'last_update_date' => date('Y-m-d g:i:s'),
+                                    );
+                                $upd=User::updateAll($updatearr, 'id = '.$userdata['id']); 
+                                $response['error']=false;                        
+                                $response['userid']=$userdata["id"];
+                                $response['token']=$sessionkey;
+                                $response['userverify']=$userdata["otpverify"];
+                                $response['statuscode']=200;
+                                $response['msg']="Success";
+                            }
+                            else
+                            {
+                                $response['error']=true;
+                                $response['statuscode']=415;
+                                $response['msg']="Account is Disable By Administration";
+                            }
+                        }*/
+                                          
+                    }
+                    else {
+                        $response['error']=true;
+                        $response['statuscode']=412;
+                        $response['msg']=$returnmessage[$response['statuscode']];
+                    }
+                }
+//                else{
+//                    $response['error']=true;
+//                    $response['statuscode']=512;
+//                    $response['msg']="Registration type invalid";
+//                }
+//            }
+        }
+        else
+        {
+            $response['error']=true;
+            $response['statuscode']=512;
+            $response['msg']="Your Request is Invalid";
+        }
+        echo json_encode($response);
+    }
+    
+    
     ########################################  REGISTER USER SECTION   ######################################################
     public function actionRegisteruser() {
         $response=array();
@@ -169,8 +331,8 @@ class ApiController extends Controller
                             $data['status']=1;
 //                        $data['role']=2;
 //                        $data['token']=$sessionkey;
-                            $data['created_date']=date('Y-m-d g:i:a');
-                            $data['updated_date']=date('Y-m-d g:i:a');
+                            $data['created_date']=date('Y-m-d g:i:s');
+                            $data['updated_date']=date('Y-m-d g:i:s');
 //                        $model->device_type=$data["device_type"];
 //                        $model->register_id=$data["register_id"];
                             $model->lang=1;
@@ -475,7 +637,7 @@ class ApiController extends Controller
                             'age' => $data["age"],  
                             'dob' => $data['dob'],
 //                            'opening_balance' => $data["opening_balance"],                 
-                            'updated_date' => date('Y-m-d g:i:a'),
+                            'updated_date' => date('Y-m-d g:i:s'),
                         );                                      
                         $upd=User::updateAll($updatearr, 'id = '.$getid["id"]); 
                         if ($upd===1)
@@ -614,8 +776,8 @@ class ApiController extends Controller
         $model2 = new UserSearch();        
         if(Yii::$app->getRequest()->method==="POST") {
             $data=Yii::$app->request->post();
-            if(!empty($data["session_key"])){
-                $getid=$model2->isExistBytoken($data["token"]);
+            if(!empty($data["session_key"]) && !empty($data)){
+                $getid=$model2->isExistBytoken($data["session_key"]);
                 if(!empty($getid)) {
 //                    $language=$model2->displayname($getid["id"],"lang");
 //                    if($language==1)
@@ -630,10 +792,114 @@ class ApiController extends Controller
 //                    }
                     $returnmessage=$this->alertenglish();
                     $defaultimg=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';
+                    $user_data=$model->find()->where(['id'=>$getid["id"],'status' => 1])->one(); 
+                    if(!empty($user_data))  {                            
+                        $user[]=array(
+                                'user_id' => $user_data['id'],
+//                                'registerid'=>$user_data['regid'],
+                                'email'=>$user_data['email'],
+                                'nick_name'=>(!empty($user_data['nick_name']))?$user_data['nick_name']:$user_data['name'],
+                                'intro' => $user_data["intro"],
+                                'location' => $user_data["location"],
+//                                'fb_id'=>$catdata['fb_id'],
+                                'image'=>(!empty($user_data['image']))?$user_data['image']:$defaultimg,
+                                'number' => $user_data["number"],
+                                'verify_no'=> $user_data['verify_no'],  
+                                'dob'=> $user_data['dob'], 
+//                                'alternate_no' => (!empty($catdata["alternate_no"]))?$catdata["alternate_no"]:'',
+                                'device_id' => $user_data["device_id"],       
+//                                'occupation' => $catdata["occupation"],   
+                                'gender' => $user_data["gender"],
+                                'age' => $user_data["age"],  
+                                'registration_type' => $user_data["registration_type"],
+                                'status' => $user_data["status"],
+                                'lang' => $user_data["lang"],
+//                                'opening_balance' => round($catdata["opening_balance"],0),                 
+                                'created_date' => $user_data["created_date"],
+                                'updated_date' => $user_data["updated_date"],     
+                            );
+                        $response['error']=false;
+                        $response['statuscode']=200;
+                        $response['msg']="Success";
+                        $response['users']=$user;
+                    }
+                    else {
+                        $response['error']=true;
+                        $response['statuscode']=409;
+                        $response['msg']=$returnmessage[$response['statuscode']];
+                    } 
+                }
+                else {
+                    $response['error']=true;
+                    $response['statuscode']=410;
+                    $response['msg']="Session key is not Matched.";
+                } 
+            }
+            else {
+                $response['error']=true;
+                $response['statuscode']=412;
+                $response['msg']="Please pass all parameters";
+            }  
+        }
+        else {
+            $response['error']=true;
+            $response['statuscode']=512;
+            $response['msg']="Invalid Request";
+        }
+        echo json_encode($response);
+    }
+    
+    #####################################  USER LOGOUT SECTION  #########################################
+    public function actionUserlogout() {
+        $response=array();
+        $model = new User();
+        $model2 = new UserSearch();
+        if(Yii::$app->getRequest()->method==="POST"){
+            $data=Yii::$app->request->post();
+            if(!empty($data["session_key"])){
+                $getid=$model2->isExistBytoken($data["session_key"]);
+                if(!empty($getid)){
+                    $updatearray=array(
+                            'session_key' => "",           
+                            'updated_date' => date('Y-m-d g:i:s'),
+                            );
+                    $upd=User::updateAll($updatearray, 'id = '.$getid["id"]); 
+                    if ($upd===1)
+                    {
+                        $response['error']=false;
+                        $response['statuscode']=200;
+                        $response['msg']="Success";
+                    } 
+                    else 
+                    {
+                        $response['error']=true;
+                        $response['statuscode']=202;
+                        $response['msg']="Error in updation";
+                    }
+                }
+                else
+                {
+                    $response['error']=true;
+                    $response['statuscode']=410;
+                    $response['msg']="Session key Not Matched";
                 }
             }
+            else{
+                $response['error']=true;
+                $response['statuscode']=412;
+                $response['msg']="Please pass all parameters";
+            }                
         }
+        else{
+            $response['error']=true;
+            $response['statuscode']=512;
+            $response['msg']="Your Request is invalid.";
+        }
+        echo json_encode($response);      
     }
+    
+    
+    //BKP
     public function actionAlluser() {
         $response=array();
         $model = new User();
@@ -1091,64 +1357,6 @@ class ApiController extends Controller
                 $response['error']=true;
                 $response['statuscode']=412;
                 $response['msg']=$returnmessage[$response['statuscode']];
-            }                
-        }
-        else
-        {
-            $response['error']=true;
-            $response['statuscode']=512;
-            $response['msg']="Invalid Request";
-        }
-        echo json_encode($response);      
-    }
-    
-
-    ##############################################################################################
-    #                       USER LOGOUT SECTION                                                  #
-    ##############################################################################################
-    public function actionLogout()
-    {
-        $response=array();
-        $model = new User();
-        $model2 = new UserSearch();
-        if(Yii::$app->getRequest()->method==="POST")
-        {
-            $data=Yii::$app->request->post();
-            if(!empty($data["token"]))
-            {
-                $getid=$model2->isExistBytoken($data["token"]);
-                if(!empty($getid))
-                {
-                    $updatearr=array(
-                            'token' => "",           
-                            'last_update_date' => date('Y-m-d g:i:s'),
-                            );
-                    $upd=User::updateAll($updatearr, 'id = '.$getid["id"]); 
-                    if ($upd===1)
-                    {
-                        $response['error']=false;
-                        $response['statuscode']=200;
-                        $response['msg']="Success";
-                    } 
-                    else 
-                    {
-                        $response['error']=true;
-                        $response['statuscode']=202;
-                        $response['msg']="Error Found";
-                    }
-                }
-                else
-                {
-                    $response['error']=true;
-                    $response['statuscode']=410;
-                    $response['msg']="Token Not Matched";
-                }
-            }
-            else
-            {
-                $response['error']=true;
-                $response['statuscode']=412;
-                $response['msg']="Pass All Parameter";
             }                
         }
         else

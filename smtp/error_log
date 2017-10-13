@@ -1,0 +1,1 @@
+[08-Sep-2017 06:52:08 UTC] PHP Fatal error:  Class 'PHPMailer' not found in /home/eb01com/public_html/mit/smtp/sendmail.php on line 10

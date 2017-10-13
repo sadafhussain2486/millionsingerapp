@@ -20,7 +20,7 @@ class UserSearch extends User
     public function rules()
     {
         return [
-            [['id', 'status', 'registration_type', 'lang','verify_no'], 'integer'],
+            [['id', 'status', 'registration_type', 'device_type', 'lang','verify_no'], 'integer'],
             [['password', 'register_id', 'fb_id', 'image', 'number', 'otp_code', 'device_id',   'gender',  'created_date', 'updated_date'], 'safe'],
         ]; //, 'device_type' 'age''opening_balance','nick_name','occupation',
     }
@@ -492,7 +492,7 @@ class UserSearch extends User
         {
             foreach($userd as $value) 
             {
-                $showuser[]=array("id"=>$value["id"],"nick_name"=>(!empty($value["nick_name"]))?$value["nick_name"]:$value["username"]);
+                $showuser[]=array("id"=>$value["id"],"nick_name"=>(!empty($value["nick_name"]))?$value["nick_name"]:$value["name"]);
             } 
         }
         return $showuser;
