@@ -6,7 +6,7 @@ use app\models\UserSearch;
 $model2= new UserSearch;
 
 use app\models\CategorySearch;
-$model3= new CategorySearch;
+// $model3= new CategorySearch;
 
 use app\models\GroupSearch;
 use app\models\GroupmemberSearch;

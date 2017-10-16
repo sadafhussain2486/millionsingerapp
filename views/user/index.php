@@ -50,7 +50,7 @@ $this->title = 'Users';
 
                     'header' => 'Actions',
                     //'headerOptions' => '',//$data->rate->name
-                    'template' => '{viewdetail}',//{update}{delete}{resetpassword}',   //{view}
+                    'template' => '{viewdetail}{update}',//{delete}{resetpassword}',   //{view}
                     'buttons' => [
                         // 'view' => function ($url, $model) {
                             // return Html::a('<span class="btn btn-primary btn-xs glyphicon glyphicon-eye-open "></span> || ', $url, [
@@ -62,22 +62,22 @@ $this->title = 'Users';
                             // ]);
                         // },
                         'viewdetail' => function ($url, $model) {
-                            return Html::a('<span class="btn ico_hide btn-success btn-xs fa fa-eye"></span>', '#', [
+                            return Html::a('<span class="btn ico_hide btn-success btn-xs fa fa-eye"></span> || ', $url, [
                                         'title' => Yii::t('app', 'View All Detail'),
                                         'data-toggle'=>'tooltip',
                                         'data-placement'=>'top',
                                         'style'=>'cursor:default;',
                                         'target'=>'_blank'
                             ]);
+                        },
+                        'update' => function ($url, $model) {
+                            return Html::a('<span class="btn btn-warning btn-xs glyphicon glyphicon-pencil"></span> || ', $url, [
+                                        'title' => Yii::t('app', 'Update'),
+                                        'data-toggle'=>'tooltip',
+                                        'data-placement'=>'top',
+                                        'style'=>'cursor:default;'
+                            ]);
                         }
-                        // 'update' => function ($url, $model) {
-                            // return Html::a('<span class="btn btn-warning btn-xs glyphicon glyphicon-pencil"></span> || ', $url, [
-                                        // 'title' => Yii::t('app', 'Update'),
-                                        // 'data-toggle'=>'tooltip',
-                                        // 'data-placement'=>'top',
-                                        // 'style'=>'cursor:default;'
-                            // ]);
-                        // },
                         // 'delete' => function ($url, $model) {
                             // return Html::a('<i class="fa fa-trash"></i>', $url, [
                                         // 'class'=>'btn btn-danger btn-xs',

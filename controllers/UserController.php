@@ -70,6 +70,21 @@ class UserController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+	/* public function actionCountries()
+    {           
+        $searchModel = new UserSearch();
+        Yii::$app->language = 'zh-CN';
+        // print_r(Yii::$app->session);
+        // print_r(Yii::$app->request->queryParams);
+        // $username = 'Alexander';
+        // echo Yii::t('app', 'Hello, {username}!', ['username' => $username]);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+// print_r($dataProvider);exit;
+        return $this->render('countries', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    } */
  public function actionViewDet()
     {    
 	}	
@@ -114,7 +129,7 @@ class UserController extends Controller
 			$model->horoscope = $data["User"]["horoscope"];
 			$model->dob = $data["User"]["dob"];
 			$model->intro = $data["User"]["intro"];
-			$model->image = $_FILES['User']['name']['image'];
+			// $model->image = $_FILES['User']['name']['image'];
             //$regid=$model1->generateRegId();
             $sessionkey = Yii::$app->getSecurity()->generateRandomString($length=20);  
             // $otpcode=substr(mt_rand(100000,999999),0,6);
@@ -122,7 +137,7 @@ class UserController extends Controller
             //$data["regid"]= $regid;
             // $data["session_key"]= $sessionkey;
             // $data["password"]= md5($data['User']['password']);
-            // $data["image"]=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';
+            $data["image"]=Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg';
             $data["verify_no"]=1;
             $data["status"]=1;
             $data["role"]=2;
@@ -136,17 +151,7 @@ class UserController extends Controller
             {
                 if($model->save())
                 {
-                    //SEND MAIL
-                    // $to=$data["name"];
-                    // $subject="This is Registration Mail";
-                    // $username=$data["nick_name"];
-                    // $from=Yii::$app->params['adminEmail'];
-                    // $fromname=Yii::$app->params['adminName'];
-                    //$message="Thankyou for Register With us <br><br> This is OTP code: ".$otpcode;
-                    // require_once('email/registration.php');        //Message Variable Come From This File
-                    // $returnmail=Yii::$app->mycomponent->Simplmail($to,$subject,$message,$from,$fromname);
-                    //END MAIL
-                    /*if($_FILES['User']['name']['image']!="")
+                   if($_FILES['User']['name']['image']!="")
                     {
                         if($_FILES['User']['size']['image']<=2097152)    //2097152=2MB
                         {
@@ -164,7 +169,7 @@ class UserController extends Controller
                             $updatearr=array('image' => $img);
                             $upd=$model->updateAll($updatearr, 'id = '.$id);   
                         } 
-                    }*/          
+                    }    
                     return $this->redirect(['index']);
                 }
                 else 
@@ -204,11 +209,20 @@ class UserController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+		 $data=array();
         if ($model->load(Yii::$app->request->post())) 
         {
+			$data=Yii::$app->request->post();
+			// print_r($model);exit;
             $model->image=$model['oldAttributes']["image"];
-            $model->last_update_date=date("Y-m-d g:i:s");
+			$model->nick_name=$data['User']["nick_name"];
+			$model->location=$data['User']["location"];
+			$model->horoscope=$data['User']["horoscope"];
+			$model->number=$data['User']["number"];
+			$model->gender=$data['User']["gender"];
+			$model->age=$data['User']["age"];
+			$model->dob=$data['User']["dob"];
+            $model->updated_date=date("Y-m-d g:i:s");
             $model->save();   
             if($_FILES['User']['name']['image']!="")
             {
@@ -229,7 +243,7 @@ class UserController extends Controller
                     $upd=$model->updateAll($updatearr, 'id = '.$id); 
                 }   
             }     
-            return $this->redirect(['viewincome', 'id' => $model->id]);
+            return $this->redirect(['viewdetail', 'id' => $model->id]);
         } 
         else 
         {

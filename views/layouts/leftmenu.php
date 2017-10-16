@@ -51,6 +51,7 @@
             User
           </a>          
         </li>
+		<li class="<?php echo(Yii::$app->controller->id=='country' && Yii::$app->controller->action->id=='dashboard')?'active':'';?>"><a href="<?php echo Url::to(['country/index']); ?>"><i class="fa fa-globe"></i>Countries </a></li>
         <!-- Yii::$app->controller->action->id=='index' || Yii::$app->controller->action->id=='create' || Yii::$app->controller->action->id=='update' || Yii::$app->controller->action->id=='viewincome' || -->
 
 

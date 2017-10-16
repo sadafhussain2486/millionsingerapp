@@ -4,7 +4,10 @@ use yii\helpers\Html;
 //use yii\widgets\DetailView;
 use app\models\UserSearch;
 $model2= new UserSearch;
-
+use app\models\User;
+$model = new User;
+$userid=Yii::$app->request->get('id');
+$userdata=$model->find()->where(['id'=>$userid])->one(); 
 //use app\models\CategorySearch;
 //$model3= new CategorySearch;
 
@@ -12,7 +15,7 @@ $model2= new UserSearch;
 //use app\models\GroupmemberSearch;
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
-//print_r($catdata);
+// print_r($catdata);exit;
 //print_r($currenttarget);
 $this->title = "View Income";
 
@@ -53,6 +56,9 @@ $this->title = "View Income";
 // print_r($catdata["anaycatamt"]);
 // $userid=Yii::$app->request->get('id');
 ?>
+<?php
+// Print_r($userdata);exit;
+?>
 <div id="loadingimage" style="display: none;"><img src="<?php echo Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/css/loading.gif'?>" height="80" width="80" style="z-index: 999; top: 40%; left: 49%; position: fixed;"></div>
 <div class="row">	
     <div class="col-md-3">
@@ -60,59 +66,28 @@ $this->title = "View Income";
       <!-- Profile Image -->
       <div class="box box-primary">
         <div class="box-body box-profile">
-          	<img class="profile-user-img img-responsive img-circle" src="<?php echo(!empty($catdata['user']['image']))?$catdata['user']['image']:Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg'; ?>" alt="User profile picture">
+          	<img class="profile-user-img img-responsive img-circle" src="<?php echo(!empty($userdata['image']))?$userdata['image']:Yii::$app->mycomponent->Siteurl().Yii::$app->request->baseUrl.'/upload/user/default.jpg'; ?>" alt="User profile picture">
 
-          	<h3 class="profile-username text-center"><?php echo $catdata['user']['nick_name']; ?></h3>
+          	<h3 class="profile-username text-center"><?php echo $userdata['nick_name']; ?></h3>
 
           	<p class="text-muted text-center"><?php echo $catdata['user']['occupation']; ?></p>
 
           	<ul class="list-group list-group-unbordered">
-          		<strong><i class="fa fa-user margin-r-5"></i> Username</strong>
-		        <p class="text-muted"><?php echo $catdata['user']['name']; ?></p>
-	            <li class="list-group-item">
-	              	<b>Unique Id</b> <a class="pull-right"><?php echo $catdata['user']['regid']; ?></a>
+          		<li class="list-group-item">
+	              	<span class="btn btn-block btn-success btn_flw">Followers<span class="">300<?php //echo ($userdata['age']==0)?'Not mentioned':$userdata['age']; ?></span></span>
+					<span class="btn btn-block btn-info btn_flw">Following <span class="">500<?php //echo $userdata['number']; ?></span></span>
 	            </li>
+	            
 	            <li class="list-group-item">
-	              	<b>Gender</b> <a class="pull-right"><?php echo $catdata['user']['gender']; ?></a>
-	            </li>
-	            <li class="list-group-item">
-	              	<b>Age</b> <a class="pull-right"><?php echo $catdata['user']['age']; ?></a>
-	            </li>
-	            <li class="list-group-item">
-	              	<b>Opening Balance</b> <a class="pull-right">$ <?php echo $catdata['user']['opening_balance']; ?></a>
-	            </li>
-	            <li class="list-group-item">	            	
-	              	<b>Savings Target</b> <a class="pull-right">$ <?php echo(!empty($currenttarget))?$currenttarget['income']:'0.0'; ?></a>
-	            </li>
-	            <li class="list-group-item">
-	              	<b>No. of Time Target Achieved</b> <a class="pull-right">4</a>
-	            </li>
-	            <li class="list-group-item">
-	              	<b>Group</b> 
-	              	<a href="javascript:;" class="label pull-right bg-blue" data-toggle="modal" data-target="#modal-info">
-						<span data-toggle="tooltip" title="Click To View Details" data-placement="top"><?php //echo GroupSearch::groupcount(Yii::$app->request->get('id'));?></span>
+	              	<b>Friends</b> <a class="pull-right">13000<?php //if($userdata['gender']==1){echo 'Male';} else{
+						//echo 'Female';
+					//}?>
 					</a>
 	            </li>
-	            <li class="list-group-item">
-	              	<b>Join Group</b> 
-	              	<a href="javascript:;" class="label pull-right bg-yellow" data-toggle="modal" data-target="#modal-info">
-						<span data-toggle="tooltip" title="Click To View Details" data-placement="top"><?php //echo GroupmemberSearch::groupjoin(Yii::$app->request->get('id'));?></span>
-					</a>
-	            </li>
-	            <li class="list-group-item">
-	              	<b>Token</b> <a class="pull-right"><?php echo $catdata['user']['token']; ?></a>
-	            </li>
-	            <li class="list-group-item">
-	              	<b>Language</b> <a class="pull-right"><?php echo($catdata['user']['lang']==0)?'English':'Chinese'; ?></a>
-	            </li>
-	            <li class="list-group-item">
-	              	<b>Created Date</b> <a class="pull-right"><?php echo $catdata['user']['created_date']; ?></a>
-	            </li>
-	            <li class="list-group-item">
-	              	<b>Last Update</b> <a class="pull-right"><?php echo $catdata['user']['last_update_date']; ?></a>
-	            </li>
+	            
+	            
           	</ul>
-          	<a id="status_<?php echo $catdata["user"]["id"];?>" href="javascript:;" class="btn <?php echo($catdata['user']['status']==1)?'btn-success':'btn-danger';?> btn-block" title="Click To Change Current Status" data-toggle="tooltip" data-placement="top" onclick="changestatus(<?php echo $catdata['user']['id'] ?>)"><b><?php echo($catdata['user']['status']==1)?'Status: Active':'Status: Inctive';?></b></a>
+          	<a id="status_<?php echo $userdata["id"];?>" href="javascript:;" class="btn <?php echo($userdata['status']==1)?'btn-success':'btn-danger';?> btn-block" title="Click To Change Current Status" data-toggle="tooltip" data-placement="top" onclick="changestatus(<?php echo $userdata['id'] ?>)"><b><?php echo($userdata['status']==1)?'Status: Active':'Status: Inctive';?></b></a>
         </div>
         <!-- /.box-body -->
       </div>
@@ -122,12 +97,13 @@ $this->title = "View Income";
     <div class="col-md-9">
       	<div class="nav-tabs-custom">
 	        <ul class="nav nav-tabs">
-	          <li class="active"><a href="#analysis" data-toggle="tab">Analysis</a></li>   
+			<li class="active"><a href="#userinfo" data-toggle="tab">User Info</a></li>
+	          <!--<li><a href="#analysis" data-toggle="tab">Analysis</a></li>   
 	          <li><a href="#activity" data-toggle="tab">Income</a></li>
 	          <li><a href="#timeline" data-toggle="tab">Expense</a></li>
 	          <li><a href="#settings" data-toggle="tab">Budget</a></li>
-	          <li><a href="#targetbudget" data-toggle="tab">Target Budget</a></li>  
-	          <li class="pull-right">
+	          <li><a href="#targetbudget" data-toggle="tab">Target Budget</a></li>-->
+	          <!--<li class="pull-right">
 	          	<div class="form-control">	          		
 		          	<form name="analysiscatfrm" id="analysiscatfrm" method="post" action="" class="pull-right">
 		          		<label>Filter</label>
@@ -147,10 +123,77 @@ $this->title = "View Income";
 
 		          	</form> 
 	          	</div>
-          	</li>     
+          	</li>  -->   
 	        </ul>
 	        <div class="tab-content">
-	        	<div class="active tab-pane" id="analysis">
+			<div class="active tab-pane" id="userinfo">
+			<div class="row">
+			<div class="col-md-12">
+			<ul class="list-group list-group-unbordered">
+          		<!--<strong><i class="fa fa-user margin-r-5"></i> Username</strong>
+		        <p class="text-muted"><?php //echo $userdata['nick_name']; ?></p>-->
+	            <li class="list-group-item">
+	              	<b>Mob. No</b> <a class="pull-right"><?php echo $userdata['number']; ?></a>
+	            </li>
+	            <li class="list-group-item">
+	              	<b>Gender</b> <a class="pull-right"><?php if($userdata['gender']==1){echo 'Male';} else{
+						echo 'Female';
+					}?></a>
+	            </li>
+	            <li class="list-group-item">
+	              	<b>Age</b> <a class="pull-right"><?php echo ($userdata['age']==0)?'Not mentioned':$userdata['age']; ?></a>
+	            </li>
+	            <li class="list-group-item">
+	              	<b>Horoscope</b> <a class="pull-right"><?php echo (empty($userdata['horoscope']))?'Not Mentioned':$userdata['horoscope']; ?></a>
+	            </li>
+	            <li class="list-group-item">	            	
+	              	<b>Date of Birth</b> <a class="pull-right"><?php echo (($userdata['dob'])==0)?'Not Mentioned':$userdata['dob']; ?></a>
+	            </li>
+				<li class="list-group-item">	            	
+	              	<b>Location</b> <a class="pull-right"><?php echo $userdata['location']; ?></a>
+	            </li>
+				<li class="list-group-item">	            	
+	              	<b>Facebook ID</b> <a class="pull-right"><?php if(!empty($userdata['fb_id'])){echo $userdata['fb_id'];} else {echo 'Not Mentioned';} ?></a>
+	            </li>
+				<li class="list-group-item">	            	
+	              	<b>WeChat</b> <a class="pull-right"><?php if(!empty($userdata['wechat_id'])){echo $userdata['wechat_id'];} else {echo 'Not Mentioned';} ?></a>
+	            </li>
+				<li class="list-group-item">	            	
+	              	<b>Twitter</b> <a class="pull-right"><?php if(!empty($userdata['instagram_id'])){echo $userdata['instagram_id'];} else {echo 'Not Mentioned';} ?></a>
+	            </li>
+				<li class="list-group-item">	            	
+	              	<b>Coins</b> <a class="pull-right"><?php echo $userdata['coins']; ?></a>
+	            </li>
+	            <!--<li class="list-group-item">
+	              	<b>No. of Time Target Achieved</b> <a class="pull-right">4</a>
+	            </li>
+	            <li class="list-group-item">
+	              	<b>Group</b> 
+	              	<a href="javascript:;" class="label pull-right bg-blue" data-toggle="modal" data-target="#modal-info">
+						<span data-toggle="tooltip" title="Click To View Details" data-placement="top"><?php //echo GroupSearch::groupcount(Yii::$app->request->get('id'));?></span>
+					</a>
+	            </li>
+	            <li class="list-group-item">
+	              	<b>Join Group</b> 
+	              	<a href="javascript:;" class="label pull-right bg-yellow" data-toggle="modal" data-target="#modal-info">
+						<span data-toggle="tooltip" title="Click To View Details" data-placement="top"><?php //echo GroupmemberSearch::groupjoin(Yii::$app->request->get('id'));?></span>
+					</a>
+	            </li>-->
+	           
+	            <li class="list-group-item">
+	              	<b>Language</b> <a class="pull-right"><?php if($userdata['lang']==1){echo 'English';}else{echo 'Other';} ?></a>
+	            </li>
+	            <li class="list-group-item">
+	              	<b>Created Date</b> <a class="pull-right"><?php echo $userdata['created_date']; ?></a>
+	            </li>
+	            <li class="list-group-item">
+	              	<b>Last Update</b> <a class="pull-right"><?php echo $userdata['updated_date']; ?></a>
+	            </li>
+          	</ul>
+						</div>
+					</div>
+			</div>
+	        	<div class="tab-pane" id="analysis">
 	            	<div class="row">
 				        <div class="col-md-6">
 				          <div class="box box-success">
@@ -307,6 +350,7 @@ $this->title = "View Income";
 					          </div>
 				        </div>			        
 				    </div>
+					 
 				    <div class="row">
 				        <div class="col-md-6">
 				        	<div class="box box-success">
@@ -945,8 +989,8 @@ function changestatus(id)
         		$("#status_"+id).text("Status: Inactive");
         	}
         },
-        error: function (exception) {
-            alert("Error Found.");
+        // error: function (exception) {
+            // alert("Error Found.");
         }
     });
 }
@@ -976,9 +1020,9 @@ function viewdetail(id)
 			$("#vcreated").html(result.created_date);
 			$("#vmodify").html(result.modify_date); 			   	
         },
-        error: function (exception){
-            alert("Error Found.");
-        }
+        // error: function (exception){
+            // alert("Error Found.");
+        // }
     });
 }
 function updatebudget(id)
@@ -1004,9 +1048,9 @@ function updatebudget(id)
         	alert("Update Successfully");
         	window.location.href="<?php echo Yii::$app->request->url; ?>";
         },
-        error: function (exception){
-            alert("Error Found.");
-        }
+        // error: function (exception){
+            // alert("Error Found.");
+        // }
     });
 }
 function viewbudgetexpense(id,catid,account)
@@ -1019,9 +1063,9 @@ function viewbudgetexpense(id,catid,account)
         success: function (result) {
         	$("#showresponse").html(result);
         },
-        error: function (exception){
-            alert("Error Found.");
-        }
+        // error: function (exception){
+            // alert("Error Found.");
+        // }
     });
 }
 </script>
@@ -1158,7 +1202,7 @@ function displaysummary(id)
         },
         error: function (exception){
         	$('#loadingimage').hide();
-            alert("Error Found.");
+            // alert("Error Found.");
         }
     });
 }	
@@ -1179,6 +1223,10 @@ function displaysummary(id)
 	month[10] = "Nov";
 	month[11] = "Dec";
 $(document).ready(function(){
+	
+	$('body').addClass('sidebar-collapse');
+	$('.wrap .content-wrapper').css('background-color','#ecf0f5');
+	
   displaysummary(<?php echo $userid; ?>);
   var cyear=$("#analysisyear").val();
   $(".showyear1").html(cyear);
